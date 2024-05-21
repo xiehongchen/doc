@@ -15,21 +15,12 @@ export default withPwa(
     cleanUrls: true,
     head: [
       ["link", { rel: "icon", href: "/favicon.ico" }],
-      // 引入 fancybox js 和 css 文件（图片放大预览功能）
-      [
-        "link",
-        {
-          rel: "stylesheet",
-          href: "/doc/css/fancybox.css",
-        },
-      ],
-      [
-        "script",
-        {
-          src: "/doc/js/fancybox.umd.js",
-        },
-      ],
     ],
+    markdown: {
+      image: {
+        lazyLoading: true
+      }
+    },
     themeConfig: {
       siteTitle: "xiehongchen",
       logo: "/seal.png",

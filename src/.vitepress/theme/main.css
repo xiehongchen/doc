@@ -38,3 +38,7 @@ html.dark {
 .medium-zoom-image {
     z-index: 21;
 }
+
+.medium-zoom-image {
+    z-index: 9999 !important;
+}
