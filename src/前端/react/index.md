@@ -23,7 +23,7 @@
 写UI就和写普通的HTML一样，抛弃命令式的繁琐实现
 
 
-![img](https://cdn.nlark.com/yuque/0/2022/png/274425/1654489480461-0cfa5cac-eb47-4629-8f11-a7ca1d8c0227.png)
+![img](/images/react/compare.png)
 
 
 
