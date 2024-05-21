@@ -196,7 +196,7 @@ export default withPwa(
         text: "在 GitHub 上编辑此页",
       },
       // 最后更新时间的显示文本
-      lastUpdatedText: "最后一次更新于",
+      lastUpdatedText: "最后一次更新于"
     },
     pwa: {
       outDir: ".vitepress/dist", // 输出目录
