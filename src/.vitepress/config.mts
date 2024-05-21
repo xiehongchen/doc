@@ -1,6 +1,5 @@
 import { defineConfig } from "vitepress";
 import { withPwa } from "@vite-pwa/vitepress";
-
 const title = "xiehongchen";
 const titleTemplate = "记录学习过程的问题";
 const description = "基于 VitePress 构建的个人博客网站";
@@ -64,135 +63,122 @@ export default withPwa(
       },
       // https://vitepress.dev/reference/default-theme-config
       nav: [
-        { text: "Home", link: "/" },
         {
-          text: "前端",
+          text: "前端基础",
           items: [
             {
-              text: "基础",
-              items: [
-                {
-                  text: "HTML",
-                  link: "/frontend/html/",
-                },
-                { text: "CSS", link: "/frontend/css/" },
-                {
-                  text: "JavaScript",
-                  link: "/frontend/javascript/",
-                },
-              ],
+              text: "HTML",
+              link: "/前端/html/",
             },
+            { text: "CSS", link: "/前端/css/" },
             {
-              text: "框架",
-              items: [
-                { text: "Vue", link: "/frontend/vue/" },
-                {
-                  text: "React",
-                  link: "/frontend/react/",
-                },
-                {
-                  text: "Next.js",
-                  link: "/frontend/next/",
-                },
-              ],
-            },
-            {
-              text: "跨端",
-              items: [
-                {
-                  text: "React native",
-                  link: "/frontend/react-native/",
-                },
-                {
-                  text: "Flutter",
-                  link: "/frontend/flutter/",
-                },
-              ],
-            },
+              text: "JavaScript",
+              link: "/前端/javascript/",
+            }
           ],
         },
         {
-          text: "服务端",
-          items: [{ text: "Go", link: "/backend/go/" }],
+          text: "前端进阶",
+          items: [
+            {
+              text: "Vue",
+              link: "/前端/vue/",
+            },
+            {
+              text: "React",
+              link: "/前端/react/",
+            }
+          ],
+        },
+        {
+          text: '其他',
+          link: '/其他'
+        },
+        {
+          text: "后端",
+          items: [{ text: "Node", link: "/后端/go/" }],
         },
       ],
       sidebar: {
-        // frontend
-        "/frontend/html/": [
-          { text: "HTML", link: "/frontend/html/index.md" },
+        // 前端
+        "/前端/html/": [
+          { text: "HTML", link: "/前端/html/index.md" },
         ],
-        "/frontend/css/": [
-          { text: "CSS", link: "/frontend/html/index.md" },
+        "/前端/css/": [
+          { text: "CSS", link: "/前端/html/index.md" },
         ],
-        "/frontend/javascript/": [
+        "/前端/javascript/": [
           {
             text: "JavaScript",
-            link: "/frontend/javascript/index.md",
+            link: "/前端/javascript/index.md",
           },
           {
             text: "初识JavaScript",
-            link: "/frontend/javascript/01初识JavaScript.md",
+            link: "/前端/javascript/01初识JavaScript.md",
           },
           {
             text: "变量、作用域与内存",
-            link: "/frontend/javascript/04变量、作用域与内存.md",
+            link: "/前端/javascript/04变量、作用域与内存.md",
           },
           {
             text: "引用值与原始值",
-            link: "/frontend/javascript/05引用值与原始值.md",
+            link: "/前端/javascript/05引用值与原始值.md",
           },
         ],
-        "/frontend/vue/": [
-          { text: "Vue", link: "/frontend/vue/index.md" },
+        "/前端/vue/": [
+          { text: "Vue", link: "/前端/vue/index.md" },
         ],
-        "/frontend/react/": [
-          { text: "React", link: "/frontend/react/index.md" },
+        "/前端/react/": [
+          { text: "React", link: "/前端/react/index.md" },
         ],
-        "/frontend/next/": [
-          { text: "Next.js", link: "/frontend/next/index.md" },
+        "/前端/next/": [
+          { text: "Next.js", link: "/前端/next/index.md" },
         ],
-        "/frontend/react-native/": [
+        "/前端/react-native/": [
           {
             text: "React Native",
-            link: "/frontend/react-native/index.md",
+            link: "/前端/react-native/index.md",
           },
         ],
-        "/frontend/flutter/": [
-          { text: "Flutter", link: "/frontend/html/flutter.md" },
+        "/前端/flutter/": [
+          { text: "Flutter", link: "/前端/html/flutter.md" },
         ],
-
-        // backend
-        "/backend/go/": [
-          { text: "Go语言", link: "/backend/go/index.md" },
+        "/后端/go/": [
+          { text: "Go语言", link: "/后端/go/index.md" },
           {
             text: "Go的前世今生",
-            link: "/backend/go/01Go的前世今生.md",
+            link: "/后端/go/01Go的前世今生.md",
           },
           {
             text: "Go的变量、常量和作用域",
-            link: "/backend/go/02Go的变量、常量和作用域.md",
+            link: "/后端/go/02Go的变量、常量和作用域.md",
           },
           {
             text: "Go语言中的字符串",
-            link: "/backend/go/03Go语言中的字符串.md",
+            link: "/后端/go/03Go语言中的字符串.md",
           },
         ],
+        "/其他": [
+          {
+            text: "Go语言中的字符串",
+            link: "/后端/go/03Go语言中的字符串.md",
+          },
+        ]
       },
 
       socialLinks: [
-        { icon: "github", link: "https://github.com/vuejs/vitepress" },
+        { icon: "github", link: "https://github.com/xiehongchen" },
       ],
       // 页脚配置
-      footer: {
-        message:
-          '用心去做高质量的专业前端内容网站，欢迎 <a style="color: #0066ff" href="https://github.com/clin211/clin-notes">star ⭐</a> 让更多人发现',
-        copyright:
-          "MIT License | 版权所有 © 2023-2024 changlin and clin211 contributors",
-      },
+      // footer: {
+      //   message:
+      //     '用心去做高质量的专业前端内容网站，欢迎 <a style="color: #0066ff" href="https://github.com/clin211/clin-notes">star ⭐</a> 让更多人发现',
+      //   copyright:
+      //     "MIT License | 版权所有 © 2023-2024 changlin and clin211 contributors",
+      // },
       // github 编辑链接
       editLink: {
-        pattern:
-          "https://github.com/clin211/clin-notes/blob/main/src/.vitepress/config.mts",
+        pattern: 'https://github.com/xiehongchen/doc/blob/master/src/:path',
         text: "在 GitHub 上编辑此页",
       },
       // 最后更新时间的显示文本
