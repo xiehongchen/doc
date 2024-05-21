@@ -20,13 +20,13 @@ export default withPwa(
         "link",
         {
           rel: "stylesheet",
-          href: "/css/fancybox.css",
+          href: "/doc/css/fancybox.css",
         },
       ],
       [
         "script",
         {
-          src: "/js/fancybox.umd.js",
+          src: "/doc/js/fancybox.umd.js",
         },
       ],
     ],
