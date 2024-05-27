@@ -128,13 +128,13 @@ Vue3 支持定义多个根节点，组件的 `<template>` 支持定义多个根�
 
 在我们执行这个命令的时候会去找 package json 的scripts 然后执行对应的dev命令
 
-<!-- ![](C:\Users\谢红尘\笔记\前端\框架\vue\vue3-images\Snipaste_2023-04-16_20-15-44.png) -->
+![](C:\Users\谢红尘\笔记\前端\框架\vue\vue3-images\Snipaste_2023-04-16_20-15-44.png)
 
 其实在我们执行npm install 的时候（包含vite） 会在node_modules/.bin/ 创建好可执行文件
 
 .bin 目录，这个目录不是任何一个 npm 包。目录下的文件，表示这是一个个软链接，打开文件可以看到文件顶部写着 #!/bin/sh ，表示这是一个脚本 
 
->  所以`npm run xxx`的时候，就会到 node_modules/bin中找对应的映射文件，然后再找到相应的js文件来执行
+>  所以npm run xxx 的时候，就会到 node_modules/bin中找对应的映射文件，然后再找到相应的js文件来执行
 >
 > 1.查找规则是先从当前项目的node_modlue /bin去找,
 >
@@ -475,11 +475,11 @@ proxy.name = 'tom'
 
 vue3的生命周期图:
 
-<!-- ![vue3生命周期图](C:/Users/谢红尘/笔记/前端/框架/vue/image/lifecycle.16e4c08e.png) -->
+![vue3生命周期图](C:/Users/谢红尘/笔记/前端/框架/vue/image/lifecycle.16e4c08e.png)
 
 vue2生命周期图:
 
-<!-- ![vue2生命周期图](C:/Users/谢红尘/笔记/前端/框架/vue/image/生命周期.png) -->
+![vue2生命周期图](C:/Users/谢红尘/笔记/前端/框架/vue/image/生命周期.png)
 
 - Vue3.0中可以继续使用Vue2.x中的生命周期钩子，但有有两个被更名：
   - `beforeDestroy`改名为 `beforeUnmount`
@@ -805,7 +805,7 @@ setup() {
 
 ### 5.provide 与 inject
 
-<!-- ![组件通信](C:/Users/谢红尘/笔记/前端/框架/vue/image/provide-inject.840efd40.png) -->
+![组件通信](C:/Users/谢红尘/笔记/前端/框架/vue/image/provide-inject.840efd40.png)
 
 - 作用：实现<strong style="color:#DD5145">祖与后代组件间</strong>通信
 
@@ -2310,6 +2310,7 @@ export function MyUse<T extends Use>(plugin: T, ...options: any[]) {
   }
   </style>
   ```
+
 ### 3.Suspense
 
 - 等待异步组件时渲染一些额外内容，让应用有更好的用户体验
@@ -2355,6 +2356,7 @@ export function MyUse<T extends Use>(plugin: T, ...options: any[]) {
       })
     }
     ```
+
 ### 4.keep-alive
 
 内置组件keep-alive
@@ -2403,6 +2405,7 @@ max
   <component :is="view"></component>
 </keep-alive>
 ```
+
 ### 5.transition动画组件
 
 Vue 提供了 transition 的封装组件，在下列情形中，可以给任何元素和组件添加进入/离开过渡:
@@ -2432,12 +2435,12 @@ Vue 提供了 transition 的封装组件，在下列情形中，可以给任何�
 6. v-leave-active：定义离开过渡生效时的状态。在整个离开过渡的阶段中应用，在离开过渡被触发时立刻生效，在过渡/动画完成之后移除。这个类可以被用来定义离开过渡的过程时间，延迟和曲线函数。
 7. v-leave-to：离开过渡的结束状态。在离开过渡被触发之后下一帧生效 (与此同时 v-leave-from 被移除)，在过渡/动画完成之后移除。
 
-```vue
-<button @click='flag = !flag'>切换</button>
-<transition name='fade'>
-  <div v-if='flag' class="box"></div>
-</transition>
-```
+如下
+
+       <button @click='flag = !flag'>切换</button>
+       <transition name='fade'>
+         <div v-if='flag' class="box"></div>
+       </transition>
 ```css
 //开始过度
 .fade-enter-from{
@@ -2472,6 +2475,7 @@ Vue 提供了 transition 的封装组件，在下列情形中，可以给任何�
    height:0px;
 }
 ```
+
 #### 2.自定义过渡 class 类名
 
 trasnsition props
@@ -2488,8 +2492,9 @@ trasnsition props
 
 你也可以分别指定进入和离开的持续时间：
 
-```vue
+```
 <transition :duration="1000">...</transition>
+
 
 <transition :duration="{ enter: 500, leave: 800 }">...</transition>
 ```
@@ -2504,18 +2509,16 @@ trasnsition props
 使用方法
 
 官方文档 Animate.css | A cross-browser library of CSS animations.
-```vue
-<transition
-    leave-active-class="animate__animated animate__bounceInLeft"
-    enter-active-class="animate__animated animate__bounceInRight"
->
-    <div v-if="flag" class="box"></div>
-</transition>
-```
 
+        <transition
+            leave-active-class="animate__animated animate__bounceInLeft"
+            enter-active-class="animate__animated animate__bounceInRight"
+        >
+            <div v-if="flag" class="box"></div>
+        </transition>
 #### 3.transition 生命周期8个
 
-```js
+```ts
 @before-enter="beforeEnter" //对应enter-from
 @enter="enter"//对应enter-active
 @after-enter="afterEnter"//对应enter-to
@@ -2549,7 +2552,7 @@ const AfterEnter = (el: Element) => {
 
 通过这个属性可以设置初始节点过度 就是页面加载完成就开始动画 对应三个状态
 
-```js
+```
 appear-active-class=""
 appear-from-class=""
 appear-to-class=""
@@ -2564,7 +2567,7 @@ appear
 
 - 多个节点，每次只渲染一个
 
-那么怎么同时渲染整个列表，比如使用 v-for？在这种场景下，我们会使用 `<transition-group>` 组件。在我们深入例子之前，先了解关于这个组件的几个特点：
+那么怎么同时渲染整个列表，比如使用 v-for？在这种场景下，我们会使用 <transition-group> 组件。在我们深入例子之前，先了解关于这个组件的几个特点：
 
 - 默认情况下，它不会渲染一个包裹元素，但是你可以通过 tag attribute 指定渲染一个元素。
 - 过渡模式不可用，因为我们不再相互切换特有的元素。
@@ -2586,6 +2589,7 @@ const Pop = () => {
     list.pop()
 }
 ```
+
 #### 2.列表的移动过渡
 
 `<transition-group>` 组件还有一个特殊之处。除了进入和离开，它还可以为定位的改变添加动画。只需了解新增的 v-move 类就可以使用这个新功能，它会应用在元素改变定位的过程中。像之前的类名一样，它的前缀可以通过 name attribute 来自定义，也可以通过 move-class attribute 手动设置
@@ -2671,6 +2675,8 @@ watch(()=>num.current, (newVal) => {
 </style>
 ```
 
+
+
 ## 6、其他
 
 ### 1.全局API的转移
@@ -2707,6 +2713,7 @@ watch(()=>num.current, (newVal) => {
     | Vue.mixin                 | app.mixin                                   |
     | Vue.use                   | app.use                                     |
     | Vue.prototype             | app.config.globalProperties                 |
+
 ### 2.其他改变
 
 - data选项应始终被声明为一个**函数**。
@@ -2820,6 +2827,7 @@ PostCSS会给一个组件中的所有dom添加了一个独一无二的动态属�
 ![img](https://img-blog.csdnimg.cn/185233f9afe8422fa815be3a22249e4a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5bCP5ruhenM=,size_20,color_FFFFFF,t_70,g_se,x_16)
 
 ### css style
+
 #### 1.插槽选择器
 
 A 组件定义一个插槽
@@ -2863,7 +2871,7 @@ import A from "@/components/A.vue"
 
 在A组件修改class a 的颜色
 
-```vue
+```
 <style scoped>
 .a{
     color:red
@@ -3026,6 +3034,8 @@ const css = useCssModule('zs')
 </style>
 ```
 
+
+
 ## tsx
 
 我们之前呢是使用Template去写我们模板。现在可以扩展另一种风格[TSX](https://so.csdn.net/so/search?q=TSX&spm=1001.2101.3001.7020)风格
@@ -3034,9 +3044,9 @@ vue2 的时候就已经支持[jsx](https://so.csdn.net/so/search?q=jsx&spm=1001.
 
 ### 1.安装插件
 
-`npm install @vitejs/plugin-vue-jsx -D`
+npm install @vitejs/plugin-vue-jsx -D
 
-`vite.config.ts` 配置
+vite.config.ts 配置
 
 ![img](https://img-blog.csdnimg.cn/35486eb0bd1a4dabac0035384f877cbe.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5bCP5ruhenM=,size_20,color_FFFFFF,t_70,g_se,x_16)
 
@@ -3093,6 +3103,7 @@ export default renderDom
 #### v-show
 
 ```ts
+ 
 import { ref } from 'vue'
  
 let flag = ref(false)
@@ -3662,9 +3673,11 @@ const send = async () => {
 什么是css原子化？
 CSS原子化的优缺点
 
-1. 减少了css体积，提高了css复用
-2. 减少起名的复杂度
-3. 增加了记忆成本 将css拆分为原子之后，你势必要记住一些class才能书写，哪怕tailwindcss提供了完善的工具链，你写background，也要记住开头是bg
+1.减少了css体积，提高了css复用
+
+2.减少起名的复杂度                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+
+3.增加了记忆成本 将css拆分为原子之后，你势必要记住一些class才能书写，哪怕tailwindcss提供了完善的工具链，你写background，也要记住开头是bg
 
 
 ## 常见库
