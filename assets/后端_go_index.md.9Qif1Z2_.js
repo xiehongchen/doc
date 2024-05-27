@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as a}from"./chunks/framework.BUyT6qI1.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"后端/go/index.md","filePath":"后端/go/index.md","lastUpdated":1716778467000}'),o={name:"后端/go/index.md"};function n(r,s,d,c,i,p){return a(),t("div")}const f=e(o,[["render",n]]);export{m as __pageData,f as default};
