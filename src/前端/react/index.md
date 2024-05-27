@@ -31,7 +31,7 @@
 
 组件是react中最重要的内容，组件可以通过搭积木的方式拼成一个完整的页面，通过组件的抽象可以增加复用能力和提高可维护性 
 
-![img](https://cdn.nlark.com/yuque/0/2022/png/274425/1659285398963-681a495b-1347-4a9f-bc62-1be28ed805eb.png)
+![img](/images/react/image.png)
 
 3- 跨平台
 
@@ -45,7 +45,7 @@ react既可以开发web应用也可以使用同样的语法开发原生应用（
 
 ## 1. 使用脚手架创建项目
 
-![img](https://cdn.nlark.com/yuque/0/2022/png/274425/1654489636650-803103c4-c5df-4034-b29a-30c800d6cb30.png)
+![img](/images/react/create-react.png)
 
 -  打开命令行窗口 
 -  执行命令 
@@ -58,8 +58,8 @@ $ npx create-react-app react-basic
 说明： 
 
 1. 1. npx create-react-app 是固定命令，`create-react-app`是React脚手架的名称
-   2. react-basic表示项目名称，可以自定义，保持语义化
-   3. npx 命令会帮助我们临时安装create-react-app包，然后初始化项目完成之后会自自动删掉，所以不需要全局安装create-react-app
+   1. react-basic表示项目名称，可以自定义，保持语义化
+   2. npx 命令会帮助我们临时安装create-react-app包，然后初始化项目完成之后会自自动删掉，所以不需要全局安装create-react-app
 
 -  启动项目 
 
@@ -123,7 +123,7 @@ ReactDOM.render(
 
 
 
-![img](https://cdn.nlark.com/yuque/0/2022/png/274425/1654489661908-d354840e-78b8-43ad-a882-8129742c794e.png)
+![img](/images/react/jsx02.png)
 
 
 
@@ -195,7 +195,7 @@ export default App
 
 注意点：需要为遍历项添加 `key` 属性
 
-![img](https://cdn.nlark.com/yuque/0/2022/png/274425/1654489746660-d500357d-1e62-4016-a25f-d36594fdfead.png)
+![img](/images/react/jsx03.png)
 
 1. key 在 HTML 结构中是看不到的，是 React 内部用来进行性能优化时使用
 2. key 在当前列表中要唯一的字符串或者数值（String/Number）
@@ -426,7 +426,7 @@ export default App
 
 ## 组件概念
 
-![img](https://cdn.nlark.com/yuque/0/2022/png/274425/1654489956815-0348d9cc-a001-4d76-a832-1bccc2f1fde4.png)
+![img](/images/react/components.png)
 
 ## 函数组件
 
@@ -658,7 +658,7 @@ export default App
 
 
 
-![img](https://cdn.nlark.com/yuque/0/2022/png/274425/1654490044831-869eaf7b-eeae-4a1d-b42f-02e64c0febea.png)
+![img](/images/react/state-update.png)
 
 
 
@@ -735,7 +735,7 @@ class Counter extends React.Component {
 
 ## this问题说明
 
-![img](https://cdn.nlark.com/yuque/0/2022/png/274425/1654490096737-17caed54-acc7-47f3-a25f-4f293c5a0e62.png)
+![img](/images/react/this.png)
 
 
 
@@ -939,7 +939,7 @@ export default App
 
 
 
-![img](https://cdn.nlark.com/yuque/0/2022/png/274425/1654490432739-ea283505-3ddd-4403-9fba-7735b04b451e.png)
+![img](/images/react/props-1.png)
 
 
 
@@ -1034,7 +1034,7 @@ class App extends React.Component {
 
 
 
-![img](https://cdn.nlark.com/yuque/0/2022/png/274425/1654490465147-2322a19d-104f-438d-a017-2725073ec0d7.png)
+![img](/images/react/props-2.png)
 
 
 
@@ -1053,7 +1053,7 @@ class App extends React.Component {
 
 
 
-![img](https://cdn.nlark.com/yuque/0/2022/png/274425/1654490502446-0596a169-847f-4446-91ce-a9a0237a9074.png)
+![img](/images/react/props-4.png)
 
 
 
@@ -1117,7 +1117,7 @@ export default App
 
 
 
-![img](https://cdn.nlark.com/yuque/0/2022/png/274425/1654490527043-7acbe144-a306-40af-a878-3a7f4ba3a599.png)
+![img](/images/react/props-5.png)
 
 
 
@@ -1191,7 +1191,7 @@ export default App
 
 `目标任务:`  了解Context机制解决的问题和使用步骤
 
-![img](https://cdn.nlark.com/yuque/0/2022/png/274425/1654490557423-1b93cabb-8bb8-4d6d-91f5-77c5cbddf105.png)
+![img](/images/react/context.png)
 
 
 
@@ -1298,8 +1298,7 @@ export default App
 对于组件来说，props是由外部传入的，我们其实无法保证组件使用者传入了什么格式的数据，如果传入的数据格式不对，就有可能会导致组件内部错误，有一个点很关键 - **组件的使用者可能报错了也不知道为什么**，看下面的例子
 
 
-
-![img](https://cdn.nlark.com/yuque/0/2022/png/274425/1654490657216-2a1d863f-3a6b-41fc-be38-7bc5fb781351.png)
+![img](/images/react/props-rule.png)
 
 面对这样的问题，如何解决？ **props校验**
 
@@ -1415,7 +1414,7 @@ class List extends Component {
 
 
 
-![img](https://cdn.nlark.com/yuque/0/2022/png/274425/1654490712545-6bd28fa7-290b-48fb-8d51-bbf5578dad3f.png)
+![img](/images/react/life.png)
 
 
 
@@ -1429,7 +1428,7 @@ http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 
 
 
-![img](https://cdn.nlark.com/yuque/0/2022/png/274425/1654490729034-d2d80cce-7fab-4dd8-bcbc-29e33bdffb63.png)
+![img](/images/react/life1.png)
 
 | 钩子 函数         | 触发时机                                            | 作用                                                         |
 | ----------------- | --------------------------------------------------- | ------------------------------------------------------------ |
@@ -1445,7 +1444,7 @@ http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 
 
 
-![img](https://cdn.nlark.com/yuque/0/2022/png/274425/1654490742583-b933202d-3de7-41ae-b9ba-75ae1d2af34c.png)
+![img](/images/react/life2.png)
 
 | 钩子函数           | 触发时机                  | 作用                                                         |
 | ------------------ | ------------------------- | ------------------------------------------------------------ |
