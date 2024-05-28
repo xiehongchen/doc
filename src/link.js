@@ -4,17 +4,17 @@ const path = require("path");
 /**
  * 获取文件内容
  * @param {*} content 文件内容
- * @returns 
+ * @returns
  */
 function extractContent(content) {
   return content.replace(/---[\s\S]*?---/, "");
 }
 
 /**
- * 
+ *
  * @param {*} directoryPath 读取目录
  * @param {*} outputPath 输出目录
- * @returns 
+ * @returns
  */
 function readDirectory(directoryPath, outputPath) {
   return new Promise((resolve, reject) => {
@@ -57,13 +57,12 @@ function readDirectory(directoryPath, outputPath) {
     });
   });
 }
-
 /**
  * 准备写入文件
  * @param {*} filePath 文件地址，这里需要读取文件内容
  * @param {*} fileName 文件名称，后续写入文件需要
  * @param {*} outputPath 文件输出地址
- * @returns 
+ * @returns
  */
 function processFile(filePath, fileName, outputPath) {
   return new Promise((resolve, reject) => {
@@ -72,20 +71,31 @@ function processFile(filePath, fileName, outputPath) {
         reject(err);
         return;
       }
-      const fileContents = extractContent(content);
-
-      const name = fileName + ".md";
-      console.log('filePath', filePath)
+      const name = `${fileName}`;
+      // 删除前4个字符
+      const path = filePath.slice(3).replace(/\\/g, "/");
+      // 获取text的数字
+      const index = Number(fileName.split("、")[0]);
+      resolve({ index, name, path });
     });
   });
 }
 
-readDirectory("src/前端/css", "/src")
+readDirectory("src/前端/javascript", "/src")
   .then((res) => {
-    console.log('readDirectory', res)
+    console.log("readDirectory", res);
+
+    // 如果index是数字，按照数字排序，否则删除
+    const list = res
+      .map((item) => {
+        return {
+          text: item.name,
+          link: item.path,
+        };
+      });
+    console.log("list", list);
   })
   .catch((error) => {
     // 处理错误
     console.error("error", error);
   });
-

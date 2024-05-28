@@ -13,13 +13,11 @@ export default withPwa(
     titleTemplate,
     description,
     cleanUrls: true,
-    head: [
-      ["link", { rel: "icon", href: "/doc/logo.jpeg" }],
-    ],
+    head: [["link", { rel: "icon", href: "/doc/logo.jpeg" }]],
     markdown: {
       image: {
-        lazyLoading: true
-      }
+        lazyLoading: true,
+      },
     },
     themeConfig: {
       siteTitle: "xiehongchen",
@@ -66,7 +64,7 @@ export default withPwa(
             {
               text: "JavaScript",
               link: "/前端/javascript/",
-            }
+            },
           ],
         },
         {
@@ -83,16 +81,16 @@ export default withPwa(
             {
               text: "React",
               link: "/前端/react/",
-            }
+            },
           ],
         },
         {
-          text: '其他',
-          link: '/其他'
+          text: "其他",
+          link: "/其他",
         },
         {
-          text: '算法',
-          link: '/算法'
+          text: "算法",
+          link: "/算法",
         },
         {
           text: "后端",
@@ -101,17 +99,23 @@ export default withPwa(
       ],
       sidebar: {
         // 前端
-        "/前端/html/": [
-          { text: "HTML", link: "/前端/html/index.md" },
-        ],
-        "/前端/css/": [
-          { text: "CSS", link: "/前端/html/index.md" },
-        ],
+        "/前端/html/": [{ text: "HTML", link: "/前端/html/index.md" }],
+        "/前端/css/": [{ text: "CSS", link: "/前端/html/index.md" }],
         "/前端/javascript/": [
+          { text: 'javascript', link: '/前端/javascript/JavaScript基础.md' },
+          { text: 'ES6', link: '/前端/javascript/ES6.md' },
           {
-            text: "JavaScript",
-            link: "/前端/javascript/index.md",
-          }
+            text: 'JavaScript进阶dom和bom',
+            link: '/前端/javascript/JavaScript进阶dom和bom.md'
+          },
+          { text: 'JavaScript面向对象', link: '/前端/javascript/JavaScript面向对象.md' },
+          { text: 'jQuery', link: '/前端/javascript/jQuery.md' },
+          { text: 'symbol', link: '/前端/javascript/symbol.md' },
+          { text: 'web服务器', link: '/前端/javascript/web服务器.md' },
+          { text: '数据可视化', link: '/前端/javascript/数据可视化.md' },
+          { text: '本地存储', link: '/前端/javascript/本地存储.md' },
+          { text: '特效', link: '/前端/javascript/特效.md' },
+          { text: '移动端', link: '/前端/javascript/移动端.md' }
         ],
         "/前端/typescript/": [
           { text: "typescript", link: "/前端/typescript/index.md" },
@@ -120,36 +124,137 @@ export default withPwa(
           { text: "Vue", link: "/前端/vue/index.md" },
           { text: "Vue2", link: "/前端/vue/vue2.md" },
         ],
-        "/前端/react/": [
-          { text: "React", link: "/前端/react/index.md" },
-        ],
-        "/后端/node/": [
-          { text: "node", link: "/后端/node/index.md" },
-        ],
+        "/前端/react/": [{ text: "React", link: "/前端/react/index.md" }],
+        "/后端/node/": [{ text: "node", link: "/后端/node/index.md" }],
         "/其他": [
-          {text: "其他",link: "/其他/index.md"},
-          {text: "前端学习",link: "/其他/前端学习.md"},
+          { text: "其他", link: "/其他/index.md" },
+          { text: "前端学习", link: "/其他/前端学习.md" },
         ],
         "/算法": [
-          {text: '算法', link: '/算法/index.md'},
-          {text: 'leetcode', collapsed: false, items: [
-            {text: '1、E-两数之和', link: '/算法/leetcode/1、E-两数之和.md'},
-            {text: '2、M-两数相加', link: '/算法/leetcode/2、M-两数相加.md'},
-            {text: '3、M-无重复字符的最长字串', link: '/算法/leetcode/3、M-无重复字符的最长字串.md'},
-            {text: '4、H-寻找两个正序数组的中位数', link: '/算法/leetcode/4、H-寻找两个正序数组的中位数'},
-            {text: '3、M-无重复字符的最长字串', link: '/算法/leetcode/3、M-无重复字符的最长字串.md'},
-            {text: '3、M-无重复字符的最长字串', link: '/算法/leetcode/3、M-无重复字符的最长字串.md'},
-            {text: '3、M-无重复字符的最长字串', link: '/算法/leetcode/3、M-无重复字符的最长字串.md'},
-            {text: '3、M-无重复字符的最长字串', link: '/算法/leetcode/3、M-无重复字符的最长字串.md'},
-            {text: '3、M-无重复字符的最长字串', link: '/算法/leetcode/3、M-无重复字符的最长字串.md'},
-            {text: '3、M-无重复字符的最长字串', link: '/算法/leetcode/3、M-无重复字符的最长字串.md'},
-          ]}
+          { text: "算法", link: "/算法/index.md" },
+          {
+            text: "leetcode",
+            collapsed: false,
+            items: [
+              {
+                text: "1、E-两数之和",
+                link: "/算法/leetcode/1、E-两数之和.md",
+              },
+              {
+                text: "2、M-两数相加",
+                link: "/算法/leetcode/2、M-两数相加.md",
+              },
+              {
+                text: "3、M-无重复字符的最长字串",
+                link: "/算法/leetcode/3、M-无重复字符的最长字串.md",
+              },
+              {
+                text: "4、H-寻找两个正序数组的中位数",
+                link: "/算法/leetcode/4、H-寻找两个正序数组的中位数.md",
+              },
+              {
+                text: "5、M-最长回文字串",
+                link: "/算法/leetcode/5、M-最长回文字串.md",
+              },
+              { text: "9、E-回文数", link: "/算法/leetcode/9、E-回文数.md" },
+              {
+                text: "10、H-正则表达式匹配",
+                link: "/算法/leetcode/10、H-正则表达式匹配.md",
+              },
+              {
+                text: "11、M-盛最多水的容器",
+                link: "/算法/leetcode/11、M-盛最多水的容器.md",
+              },
+              {
+                text: "13、E-罗马数字转整数",
+                link: "/算法/leetcode/13、E-罗马数字转整数.md",
+              },
+              {
+                text: "14、E-最长公共前缀",
+                link: "/算法/leetcode/14、E-最长公共前缀.md",
+              },
+              {
+                text: "20、E-有效的括号",
+                link: "/算法/leetcode/20、E-有效的括号.md",
+              },
+              {
+                text: "21、E-合并俩个有序链表",
+                link: "/算法/leetcode/21、E-合并俩个有序链表.md",
+              },
+              {
+                text: "26、E-删除有序数组中的重复项",
+                link: "/算法/leetcode/26、E-删除有序数组中的重复项.md",
+              },
+              {
+                text: "27、E-移除元素",
+                link: "/算法/leetcode/27、E-移除元素.md",
+              },
+              {
+                text: "80、M-删除有序数据中的重复项",
+                link: "/算法/leetcode/80、M-删除有序数据中的重复项.md",
+              },
+              {
+                text: "88、E-合并两个有序数组",
+                link: "/算法/leetcode/88、E-合并两个有序数组.md",
+              },
+              {
+                text: "121、E-买卖股票的最佳时机",
+                link: "/算法/leetcode/121、E-买卖股票的最佳时机.md",
+              },
+              {
+                text: "151、M-反转字符串中的单词",
+                link: "/算法/leetcode/151、M-反转字符串中的单词.md",
+              },
+              {
+                text: "169、E-多数元素",
+                link: "/算法/leetcode/169、E-多数元素.md",
+              },
+              {
+                text: "189、M-轮转数组",
+                link: "/算法/leetcode/189、M-轮转数组.md",
+              },
+              {
+                text: "205、E-同构字符串",
+                link: "/算法/leetcode/205、E-同构字符串.md",
+              },
+              {
+                text: "392、E-判断子序列",
+                link: "/算法/leetcode/392、E-判断子序列.md",
+              },
+              {
+                text: "724、E-寻找数组的中心下标",
+                link: "/算法/leetcode/724、E-寻找数组的中心下标.md",
+              },
+              {
+                text: "1071、E-字符串的最大公因子",
+                link: "/算法/leetcode/1071、E-字符串的最大公因子.md",
+              },
+              {
+                text: "1111、M-有效括号的嵌套深度",
+                link: "/算法/leetcode/1111、M-有效括号的嵌套深度.md",
+              },
+              {
+                text: "1480、E-一维数组的动态和",
+                link: "/算法/leetcode/1480、E-一维数组的动态和.md",
+              },
+              {
+                text: "1507、E-转变日期格式",
+                link: "/算法/leetcode/1507、E-转变日期格式.md",
+              },
+              {
+                text: "1556、E-千位分隔符",
+                link: "/算法/leetcode/1556、E-千位分隔符.md",
+              },
+              {
+                text: "2047、E-句子中的有效单词数",
+                link: "/算法/leetcode/2047、E-句子中的有效单词数.md",
+              },
+            ],
+          },
         ],
       },
 
-      socialLinks: [
-        { icon: "github", link: "https://github.com/xiehongchen" },
-      ],
+      socialLinks: [{ icon: "github", link: "https://github.com/xiehongchen" }],
       // 页脚配置
       // footer: {
       //   message:
@@ -159,11 +264,11 @@ export default withPwa(
       // },
       // github 编辑链接
       editLink: {
-        pattern: 'https://github.com/xiehongchen/doc/blob/master/src/:path',
+        pattern: "https://github.com/xiehongchen/doc/blob/master/src/:path",
         text: "在 GitHub 上编辑此页",
       },
       // 最后更新时间的显示文本
-      lastUpdatedText: "最后一次更新于"
+      lastUpdatedText: "最后一次更新于",
     },
     pwa: {
       outDir: ".vitepress/dist", // 输出目录
