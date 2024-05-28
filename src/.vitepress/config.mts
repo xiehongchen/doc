@@ -87,8 +87,12 @@ export default withPwa(
           link: '/其他'
         },
         {
+          text: '算法',
+          link: '/算法'
+        },
+        {
           text: "后端",
-          items: [{ text: "Node", link: "/后端/go/" }],
+          items: [{ text: "Node", link: "/后端/node/" }],
         },
       ],
       sidebar: {
@@ -112,39 +116,22 @@ export default withPwa(
         "/前端/react/": [
           { text: "React", link: "/前端/react/index.md" },
         ],
-        "/前端/next/": [
-          { text: "Next.js", link: "/前端/next/index.md" },
-        ],
-        "/前端/react-native/": [
-          {
-            text: "React Native",
-            link: "/前端/react-native/index.md",
-          },
-        ],
-        "/前端/flutter/": [
-          { text: "Flutter", link: "/前端/html/flutter.md" },
-        ],
-        "/后端/go/": [
-          { text: "Go语言", link: "/后端/go/index.md" },
-          {
-            text: "Go的前世今生",
-            link: "/后端/go/01Go的前世今生.md",
-          },
-          {
-            text: "Go的变量、常量和作用域",
-            link: "/后端/go/02Go的变量、常量和作用域.md",
-          },
-          {
-            text: "Go语言中的字符串",
-            link: "/后端/go/03Go语言中的字符串.md",
-          },
+        "/后端/node/": [
+          { text: "node", link: "/后端/node/index.md" },
         ],
         "/其他": [
           {
-            text: "Go语言中的字符串",
-            link: "/后端/go/03Go语言中的字符串.md",
+            text: "其他",
+            link: "/其他/index.md",
           },
-        ]
+        ],
+        "/算法": [
+          {text: '算法', link: '/算法/index.md'},
+          {text: 'leetcode', collapsed: false, items: [
+            {text: '1、E-两数之和', link: '/算法/leetcode/1、E-两数之和.md'},
+            {text: '2、M-两数相加', link: '/算法/leetcode/2、M-两数相加.md'}
+          ]}
+        ],
       },
 
       socialLinks: [
