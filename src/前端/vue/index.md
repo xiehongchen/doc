@@ -4,8 +4,6 @@
 
 <img src="https://user-images.githubusercontent.com/499550/93624428-53932780-f9ae-11ea-8d16-af949e16a09f.png" style="width:200px" />
 
-
-
 ### 1.Vue3 简介
 
 - 2020年9月18日，Vue.js发布3.0版本，代号：One Piece（海贼王）
@@ -87,7 +85,7 @@ vite官网：https://vitejs.cn
   - 真正的按需编译，不再等待整个应用编译完成。
 - 传统构建 与 vite构建对比图
 
-<img src="https://kalacloud.com/static/9affcc8711ebfcd3d3cc7269c57ced52/526aa/bundler.png" />
+![img](/images/vue/compare.png)
 
 ```bash
 ## 创建工程
@@ -1755,7 +1753,8 @@ const vMoveDirective: Directive = {
 - modifiers：包含修饰符(如果有的话) 的对象。例如在 v-my-directive.foo.bar 中，修饰符对象为 {foo: true，bar: true}。
 - dir：一个对象，在注册指令时作为参数传递。例如，在以下指令中
 
-![img](https://img-blog.csdnimg.cn/f9e5558801104f81ac32c54d6cf5f587.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5bCP5ruhenM=,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img](/images/vue/p-1.png)
+
 
 
 第三个 当前元素的虚拟DOM 也就是Vnode
@@ -1933,29 +1932,8 @@ let vLazy: Directive<HTMLImageElement, string> = async (el, binding) => {
 
 使用传统OptionsAPI中，新增或者修改一个需求，就需要分别在data，methods，computed里修改 。
 
-<div style="width:600px;height:370px;overflow:hidden;float:left">
-    <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f84e4e2c02424d9a99862ade0a2e4114~tplv-k3u1fbpfcp-watermark.image" style="width:600px;float:left" />
-</div>
-<div style="width:300px;height:370px;overflow:hidden;float:left">
-    <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e5ac7e20d1784887a826f6360768a368~tplv-k3u1fbpfcp-watermark.image" style="zoom:50%;width:560px;left" /> 
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<img src="/images/vue/watermark.gif" style="width:100%" />
+<img src="/images/vue/options.gif" style="width:100%;margin-top: 20px" />
 
 
 
@@ -1963,32 +1941,8 @@ let vLazy: Directive<HTMLImageElement, string> = async (el, binding) => {
 
 我们可以更加优雅的组织我们的代码，函数。让相关功能的代码更加有序的组织在一起。
 
-<div style="width:400px;height:300px;overflow:hidden;float:left">
-    <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bc0be8211fc54b6c941c036791ba4efe~tplv-k3u1fbpfcp-watermark.image"style="height:360px"/>
-</div>
-<div style="width:430px;height:340px;overflow:hidden;float:left">
-    <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6cc55165c0e34069a75fe36f8712eb80~tplv-k3u1fbpfcp-watermark.image"style="height:360px"/>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<img src="/images/vue/options-composition.gif" style="width:100%" />
+<img src="/images/vue/composition.gif" style="width:100%;margin-top: 20px" />
 
 ## 5、新的组件
 
@@ -2325,7 +2279,7 @@ export function MyUse<T extends Use>(plugin: T, ...options: any[]) {
 
   - 使用```Suspense```包裹组件，并配置好```default``` 与 ```fallback```
 
-    ```
+    ```vue
     <template>
     	<div class="app">
     <h3>我是 App 组件</h3>3>
@@ -2805,19 +2759,19 @@ PostCSS会给一个组件中的所有dom添加了一个独一无二的动态属�
 案例修改Element ui Input样式
 
 发现没有生效
-![img](https://img-blog.csdnimg.cn/566e8a5d6e5349638615ff65771896a0.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5bCP5ruhenM=,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img](/images/vue/p-2.png)
 
  如果不写Scoped 就没问题
 
 原因就是Scoped 搞的鬼 他在进行PostCss转化的时候把元素选择器默认放在了最后
 
-![img](https://img-blog.csdnimg.cn/c896c971d3ce407989d3439101a180ad.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5bCP5ruhenM=,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img](/images/vue/p-3.png)
 
  Vue 提供了样式穿透:deep() 他的作用就是用来改变 属性选择器的位置
 
-![img](https://img-blog.csdnimg.cn/100a1402669844c2a0da76d7959c978e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5bCP5ruhenM=,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img](/images/vue/p-4.png)
 
-![img](https://img-blog.csdnimg.cn/185233f9afe8422fa815be3a22249e4a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5bCP5ruhenM=,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img](/images/vue/p-5.png)
 
 ### css style
 #### 1.插槽选择器

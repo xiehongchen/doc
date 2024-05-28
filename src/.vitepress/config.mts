@@ -103,22 +103,11 @@ export default withPwa(
           {
             text: "JavaScript",
             link: "/前端/javascript/index.md",
-          },
-          {
-            text: "初识JavaScript",
-            link: "/前端/javascript/01初识JavaScript.md",
-          },
-          {
-            text: "变量、作用域与内存",
-            link: "/前端/javascript/04变量、作用域与内存.md",
-          },
-          {
-            text: "引用值与原始值",
-            link: "/前端/javascript/05引用值与原始值.md",
-          },
+          }
         ],
         "/前端/vue/": [
           { text: "Vue", link: "/前端/vue/index.md" },
+          { text: "Vue2", link: "/前端/vue/vue2.md" },
         ],
         "/前端/react/": [
           { text: "React", link: "/前端/react/index.md" },
