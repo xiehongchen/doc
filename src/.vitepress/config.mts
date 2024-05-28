@@ -127,16 +127,22 @@ export default withPwa(
           { text: "node", link: "/后端/node/index.md" },
         ],
         "/其他": [
-          {
-            text: "其他",
-            link: "/其他/index.md",
-          },
+          {text: "其他",link: "/其他/index.md"},
+          {text: "前端学习",link: "/其他/前端学习.md"},
         ],
         "/算法": [
           {text: '算法', link: '/算法/index.md'},
           {text: 'leetcode', collapsed: false, items: [
             {text: '1、E-两数之和', link: '/算法/leetcode/1、E-两数之和.md'},
-            {text: '2、M-两数相加', link: '/算法/leetcode/2、M-两数相加.md'}
+            {text: '2、M-两数相加', link: '/算法/leetcode/2、M-两数相加.md'},
+            {text: '3、M-无重复字符的最长字串', link: '/算法/leetcode/3、M-无重复字符的最长字串.md'},
+            {text: '4、H-寻找两个正序数组的中位数', link: '/算法/leetcode/4、H-寻找两个正序数组的中位数'},
+            {text: '3、M-无重复字符的最长字串', link: '/算法/leetcode/3、M-无重复字符的最长字串.md'},
+            {text: '3、M-无重复字符的最长字串', link: '/算法/leetcode/3、M-无重复字符的最长字串.md'},
+            {text: '3、M-无重复字符的最长字串', link: '/算法/leetcode/3、M-无重复字符的最长字串.md'},
+            {text: '3、M-无重复字符的最长字串', link: '/算法/leetcode/3、M-无重复字符的最长字串.md'},
+            {text: '3、M-无重复字符的最长字串', link: '/算法/leetcode/3、M-无重复字符的最长字串.md'},
+            {text: '3、M-无重复字符的最长字串', link: '/算法/leetcode/3、M-无重复字符的最长字串.md'},
           ]}
         ],
       },
