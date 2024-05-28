@@ -14,7 +14,7 @@ export default withPwa(
     description,
     cleanUrls: true,
     head: [
-      ["link", { rel: "icon", href: "/favicon.ico" }],
+      ["link", { rel: "icon", href: "/doc/logo.jpeg" }],
     ],
     markdown: {
       image: {
@@ -23,7 +23,7 @@ export default withPwa(
     },
     themeConfig: {
       siteTitle: "xiehongchen",
-      logo: "/seal.png",
+      logo: "/logo.jpeg",
       search: {
         provider: "local",
         options: {
@@ -73,6 +73,10 @@ export default withPwa(
           text: "前端进阶",
           items: [
             {
+              text: "TypeScript",
+              link: "/前端/typescript/",
+            },
+            {
               text: "Vue",
               link: "/前端/vue/",
             },
@@ -108,6 +112,9 @@ export default withPwa(
             text: "JavaScript",
             link: "/前端/javascript/index.md",
           }
+        ],
+        "/前端/typescript/": [
+          { text: "typescript", link: "/前端/typescript/index.md" },
         ],
         "/前端/vue/": [
           { text: "Vue", link: "/前端/vue/index.md" },

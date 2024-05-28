@@ -7,7 +7,7 @@ hero:
   text: 每一天都要做得比昨天好
   tagline: 记录学习过程、工作上的一些问题和笔记
   image:
-    src: /seal.png
+    src: /logo.jpeg
     alt: 图片
   actions:
     - theme: brand
