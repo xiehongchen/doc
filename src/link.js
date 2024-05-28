@@ -36,7 +36,7 @@ function readDirectory(directoryPath, outputPath) {
                 return;
               }
 
-              if (stats.isFile() && path.extname(filePath) === ".js") {
+              if (stats.isFile() && path.extname(filePath) === ".md") {
                 const fileName = path.basename(
                   filePath,
                   path.extname(filePath)
@@ -75,11 +75,12 @@ function processFile(filePath, fileName, outputPath) {
       const fileContents = extractContent(content);
 
       const name = fileName + ".md";
+      console.log('filePath', filePath)
     });
   });
 }
 
-readDirectory("/前端", "/src")
+readDirectory("src/前端/css", "/src")
   .then((res) => {
     console.log('readDirectory', res)
   })
