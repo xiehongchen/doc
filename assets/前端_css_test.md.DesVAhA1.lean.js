@@ -1,1 +1,0 @@
-import{_ as t,c as e,o as s}from"./chunks/framework.4GlNAmPA.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"前端/css/test.md","filePath":"前端/css/test.md","lastUpdated":1716951317000}'),a={name:"前端/css/test.md"};function c(r,o,n,d,p,_){return s(),e("div")}const f=t(a,[["render",c]]);export{m as __pageData,f as default};
