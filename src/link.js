@@ -81,7 +81,7 @@ function processFile(filePath, fileName, outputPath) {
   });
 }
 
-readDirectory("src/其他", "/src")
+readDirectory("src/面试题", "/src")
   .then((res) => {
     console.log("readDirectory", res);
 

@@ -101,6 +101,15 @@ export default withPwa(
         },
       ],
       sidebar: {
+        "/面试题": [
+          { text: 'index', link: '/面试题/index.md' },
+          { text: 'html&css', link: '/面试题/html&css.md' },
+          { text: 'javascript', link: '/面试题/javascript.md' },
+          { text: 'react', link: '/面试题/react.md' },
+          { text: 'vue', link: '/面试题/vue.md' },
+          { text: '浏览器', link: '/面试题/浏览器.md' },
+          { text: '计算机网络', link: '/面试题/计算机网络.md' }
+        ],
         // 前端
         "/前端/html/": [{ text: "HTML", link: "/前端/html/index.md" }],
         "/前端/css/": [
