@@ -1,7 +1,3 @@
-[TOC]
-
-
-
 # DOM  BOM
 
 #### js组成
@@ -835,6 +831,7 @@ type、value、checked、selected、disabled
 </html>
 ```
 
+
 ##### 开关灯
 
 ```html
@@ -1073,7 +1070,6 @@ node.parentNode
     </script>
 </body>
 ```
-
 #### 3、子节点
 
 ```
@@ -1229,7 +1225,6 @@ function getNextElementSibling(element) {
     return null;
 }
 ```
-
 #### 5、创建节点
 
 ```
@@ -1307,7 +1302,6 @@ node.cloneNode()
     </script>
 </body>
 ```
-
 ##### 6、三种动态创建元素的区别
 
 - `document.write()` 是直接将内容写入页面的内容流，但是文档流执行完毕，则它会导致页面全部重绘
@@ -1400,10 +1394,22 @@ H5提供的新方法：querySelector、querySelectorAll (提倡)
 | 传统注册方式                                                 | 方法监听注册方式                                      |
 | ------------------------------------------------------------ | ----------------------------------------------------- |
 | 利用on开头的事件onlick                                       | w3c 标准推荐方式                                      |
-| <button onclick = "alert("hi")"></button>                    | addEventListener() 它是一个方法                       |
+| `<button onclick = "alert("hi")"></button>`                    | addEventListener() 它是一个方法                       |
 | btn.onclick = function() {}                                  | IE9 之前的 IE 不支持此方法，可使用 attachEvent() 代替 |
 | 特点：注册事件的**唯一性**                                   | 特点：同一个元素同一个事件可以注册多个监听器          |
 | 同一个元素同一个事件只能设置一个处理函数，最后注册的处理函数将会覆盖前面注册的处理函数 | 按注册顺序依次执行                                    |
+
+
+
+
+
+
+
+
+
+
+
+
 
 ##### addEventListener事件监听方式
 
@@ -2261,7 +2267,7 @@ window.setInterval(回调函数,[间隔的毫秒数]);
 2. **异步任务**(回调函数)放入任务队列中
 3. 一旦执行栈中的所有同步任务执行完毕，系统就会**按次序读取**任务队列中的异步任务，于是被读取的异步任务**结束等待状态**，**进入执行栈**，开始执行
 
-![image-20221105123707668](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221105123707668.png)
+<!-- ![image-20221105123707668](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221105123707668.png) -->
 
 ```js
 console.log(1);
