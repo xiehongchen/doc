@@ -81,7 +81,7 @@ function processFile(filePath, fileName, outputPath) {
   });
 }
 
-readDirectory("src/前端/javascript", "/src")
+readDirectory("src/算法/华为机考", "/src")
   .then((res) => {
     console.log("readDirectory", res);
 

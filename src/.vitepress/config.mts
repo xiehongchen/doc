@@ -102,20 +102,23 @@ export default withPwa(
         "/前端/html/": [{ text: "HTML", link: "/前端/html/index.md" }],
         "/前端/css/": [{ text: "CSS", link: "/前端/html/index.md" }],
         "/前端/javascript/": [
-          { text: 'javascript', link: '/前端/javascript/index.md' },
-          { text: 'ES6', link: '/前端/javascript/ES6.md' },
+          { text: "javascript", link: "/前端/javascript/index.md" },
+          { text: "ES6", link: "/前端/javascript/ES6.md" },
           {
-            text: 'JavaScript进阶dom和bom',
-            link: '/前端/javascript/JavaScript进阶dom和bom.md'
+            text: "JavaScript进阶dom和bom",
+            link: "/前端/javascript/JavaScript进阶dom和bom.md",
           },
-          { text: 'JavaScript面向对象', link: '/前端/javascript/JavaScript面向对象.md' },
-          { text: 'jQuery', link: '/前端/javascript/jQuery.md' },
-          { text: 'symbol', link: '/前端/javascript/symbol.md' },
-          { text: 'web服务器', link: '/前端/javascript/web服务器.md' },
-          { text: '数据可视化', link: '/前端/javascript/数据可视化.md' },
-          { text: '本地存储', link: '/前端/javascript/本地存储.md' },
-          { text: '特效', link: '/前端/javascript/特效.md' },
-          { text: '移动端', link: '/前端/javascript/移动端.md' }
+          {
+            text: "JavaScript面向对象",
+            link: "/前端/javascript/JavaScript面向对象.md",
+          },
+          { text: "jQuery", link: "/前端/javascript/jQuery.md" },
+          { text: "symbol", link: "/前端/javascript/symbol.md" },
+          { text: "web服务器", link: "/前端/javascript/web服务器.md" },
+          { text: "数据可视化", link: "/前端/javascript/数据可视化.md" },
+          { text: "本地存储", link: "/前端/javascript/本地存储.md" },
+          { text: "特效", link: "/前端/javascript/特效.md" },
+          { text: "移动端", link: "/前端/javascript/移动端.md" },
         ],
         "/前端/typescript/": [
           { text: "typescript", link: "/前端/typescript/index.md" },
@@ -132,6 +135,92 @@ export default withPwa(
         ],
         "/算法": [
           { text: "算法", link: "/算法/index.md" },
+          {
+            text: "华为机考",
+            collapsed: false,
+            items: [
+              {
+                text: "HJ5-E-进制转换",
+                link: "/算法/华为机考/HJ5-E-进制转换.md",
+              },
+              {
+                text: "HJ10-E-字符个数统计",
+                link: "/算法/华为机考/HJ10-E-字符个数统计.md",
+              },
+              {
+                text: "HJ40-E-统计字符",
+                link: "/算法/华为机考/HJ40-E-统计字符.md",
+              },
+              {
+                text: "HJ58-E-输入n个整数，输出其中最小的k个",
+                link: "/算法/华为机考/HJ58-E-输入n个整数，输出其中最小的k个.md",
+              },
+              {
+                text: "HJ59-M-找出字符串中第一个只出现一次的字符",
+                link: "/算法/华为机考/HJ59-M-找出字符串中第一个只出现一次的字符.md",
+              },
+              {
+                text: "HJ60-E-查找组成一个偶数最接近的两个素数",
+                link: "/算法/华为机考/HJ60-E-查找组成一个偶数最接近的两个素数.md",
+              },
+              {
+                text: "HJ75-M-公共子串计算",
+                link: "/算法/华为机考/HJ75-M-公共子串计算.md",
+              },
+              {
+                text: "HJ81-E-字符串字符匹配",
+                link: "/算法/华为机考/HJ81-E-字符串字符匹配.md",
+              },
+              {
+                text: "HJ85-E-最长回文子串",
+                link: "/算法/华为机考/HJ85-E-最长回文子串.md",
+              },
+              {
+                text: "HJ86-E-求最大连续bit数",
+                link: "/算法/华为机考/HJ86-E-求最大连续bit数.md",
+              },
+              {
+                text: "HJ100-E-等差数列",
+                link: "/算法/华为机考/HJ100-E-等差数列.md",
+              },
+              { text: "5键键盘", link: "/算法/华为机考/5键键盘.md" },
+              {
+                text: "乱序整数序列两数之和绝对值最小",
+                link: "/算法/华为机考/乱序整数序列两数之和绝对值最小.md",
+              },
+              { text: "分积木", link: "/算法/华为机考/分积木.md" },
+              {
+                text: "判断是不是子字符串",
+                link: "/算法/华为机考/判断是不是子字符串.md",
+              },
+              {
+                text: "多个数组按顺序合并",
+                link: "/算法/华为机考/多个数组按顺序合并.md",
+              },
+              { text: "字符串加密", link: "/算法/华为机考/字符串加密.md" },
+              { text: "射击比赛", link: "/算法/华为机考/射击比赛.md" },
+              { text: "尼科彻斯定理", link: "/算法/华为机考/尼科彻斯定理.md" },
+              { text: "括号检查", link: "/算法/华为机考/括号检查.md" },
+              {
+                text: "按单词下标区间翻转文章内容",
+                link: "/算法/华为机考/按单词下标区间翻转文章内容.md",
+              },
+              { text: "整数对最小和", link: "/算法/华为机考/整数对最小和.md" },
+              {
+                text: "检查是否存在满足条件的数字组合",
+                link: "/算法/华为机考/检查是否存在满足条件的数字组合.md",
+              },
+              {
+                text: "求字符串中所有整数的最小和",
+                link: "/算法/华为机考/求字符串中所有整数的最小和.md",
+              },
+              { text: "组成最大数", link: "/算法/华为机考/组成最大数.md" },
+              {
+                text: "非严格递增连续数字序列",
+                link: "/算法/华为机考/非严格递增连续数字序列.md",
+              },
+            ],
+          },
           {
             text: "leetcode",
             collapsed: false,

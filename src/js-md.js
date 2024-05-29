@@ -115,7 +115,7 @@ function writeToFile(file, pathName, fileName) {
 });
 }
 
-readDirectory("/src/算法/Leetcode刷题", "/src/算法/leetcode")
+readDirectory("src/算法/机考", "src/算法/华为机考")
   .then((res) => {
     console.log('readDirectory', res)
   })
