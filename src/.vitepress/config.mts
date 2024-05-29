@@ -100,9 +100,16 @@ export default withPwa(
       sidebar: {
         // 前端
         "/前端/html/": [{ text: "HTML", link: "/前端/html/index.md" }],
-        "/前端/css/": [{ text: "CSS", link: "/前端/html/index.md" }],
+        "/前端/css/": [
+          { text: "CSS", link: "/前端/css/index.md" },
+          { text: "css学习", link: "/前端/css/css学习.md" },
+        ],
         "/前端/javascript/": [
           { text: "javascript", link: "/前端/javascript/index.md" },
+          {
+            text: "JavaScript基础",
+            link: "/前端/javascript/JavaScript基础",
+          },
           { text: "ES6", link: "/前端/javascript/ES6.md" },
           {
             text: "JavaScript进阶dom和bom",
@@ -119,22 +126,56 @@ export default withPwa(
           { text: "本地存储", link: "/前端/javascript/本地存储.md" },
           { text: "特效", link: "/前端/javascript/特效.md" },
           { text: "移动端", link: "/前端/javascript/移动端.md" },
+          { text: "promise", link: "/前端/javascript/promise.md" },
+          { text: "canvas", link: "/前端/javascript/canvas.md" },
+          { text: "并发控制", link: "/前端/javascript/并发控制.md" },
+          { text: "对象方法", link: "/前端/javascript/对象方法.md" },
+          { text: "数组方法", link: "/前端/javascript/数组方法.md" },
+          { text: "函数柯里化", link: "/前端/javascript/函数柯里化.md" },
+          { text: "隐式转换", link: "/前端/javascript/隐式转换.md" },
+          
         ],
         "/前端/typescript/": [
           { text: "typescript", link: "/前端/typescript/index.md" },
         ],
         "/前端/vue/": [
-          { text: "Vue", link: "/前端/vue/index.md" },
+          { text: "vue", link: "/前端/vue/index.md" },
           { text: "Vue2", link: "/前端/vue/vue2.md" },
+          { text: "Vue3", link: "/前端/vue/vue3.md" },
         ],
         "/前端/react/": [{ text: "React", link: "/前端/react/index.md" }],
         "/后端/node/": [{ text: "node", link: "/后端/node/index.md" }],
         "/其他": [
           { text: "其他", link: "/其他/index.md" },
           { text: "前端学习", link: "/其他/前端学习.md" },
+          { text: "git", link: "/其他/git.md" },
+          { text: "webpack5", link: "/其他/webpack5.md" },
+          { text: "下载", link: "/其他/下载.md" },
+          {
+            text: "关于时间的处理&Date对象",
+            link: "/其他/关于时间的处理&Date对象.md",
+          },
+          { text: "判断平台", link: "/其他/判断平台.md" },
+          { text: "导出功能", link: "/其他/导出功能.md" },
+          { text: "微信jssdk接入", link: "/其他/微信jssdk接入.md" },
+          { text: "搭建Monorepo", link: "/其他/搭建Monorepo.md" },
+          { text: "支付", link: "/其他/支付.md" },
+          {
+            text: "文件上传后缀名与文件类型对照表",
+            link: "/其他/文件上传后缀名与文件类型对照表.md",
+          },
+          { text: "文件格式", link: "/其他/文件格式.md" },
+          { text: "版本号排序", link: "/其他/版本号排序.md" },
+          { text: "禁止下拉", link: "/其他/禁止下拉.md" },
+          { text: "视频文件修改md5值", link: "/其他/视频文件修改md5值.md" },
+          { text: "路由", link: "/其他/路由.md" },
         ],
         "/算法": [
           { text: "算法", link: "/算法/index.md" },
+          { text: "插入排序", link: "/算法/插入排序.md" },
+          { text: "快速排序", link: "/算法/快速排序.md" },
+          { text: "冒泡排序", link: "/算法/冒泡排序.md" },
+          { text: "选择排序", link: "/算法/选择排序.md" },
           {
             text: "华为机考",
             collapsed: false,
