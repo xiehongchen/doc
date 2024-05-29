@@ -24,7 +24,7 @@
 
 **优点：**
 
-![image-20221106114126271](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221106114126271.png)
+<!-- ![image-20221106114126271](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221106114126271.png) -->
 
 ## 2、jQuery使用
 
@@ -111,11 +111,11 @@ $('div')[0]
 $("选择器")	//里面选择器直接写css选择器即可，但是要加引号  
 ```
 
-![image-20221106125515309](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221106125515309.png)
+<!-- ![image-20221106125515309](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221106125515309.png) -->
 
 #### 2、jQuery层级选择器
 
-![image-20221106125951943](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221106125951943.png)
+<!-- ![image-20221106125951943](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221106125951943.png) -->
 
 #### 3、隐式迭代
 
@@ -131,11 +131,11 @@ $("div").css('属性','值');
 
 #### 4、jQuery筛选选择器
 
-![image-20221106130300459](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221106130300459.png)
+<!-- ![image-20221106130300459](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221106130300459.png) -->
 
 #### 5、jQuery筛选方法
 
-![image-20221106130357352](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221106130357352.png)
+<!-- ![image-20221106130357352](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221106130357352.png) -->
 
 #### 6、jQuery排他思想
 
@@ -197,7 +197,7 @@ $("div").toggleClass("current");
 
 ## 4、jQuery效果
 
-![image-20221106132238401](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221106132238401.png)
+<!-- ![image-20221106132238401](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221106132238401.png) -->
 
 ### 1、显示、隐藏效果
 
@@ -483,9 +483,9 @@ $.each($("div"),function (i, ele) {
 
 ### 1、尺寸
 
-![image-20221106150739741](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221106150739741.png)
+<!-- ![image-20221106150739741](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221106150739741.png) -->
 
-![img_jquerydim](C:\Users\谢红尘\笔记\图片\img_jquerydim.gif)
+<!-- ![img_jquerydim](C:\Users\谢红尘\笔记\图片\img_jquerydim.gif) -->
 
 #### 1、width()和height() 方法
 

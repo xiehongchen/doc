@@ -6,7 +6,7 @@
 >
 > 封装性、继承性、多态性
 
-![image-20221107094132490](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107094132490.png)
+<!-- ![image-20221107094132490](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107094132490.png) -->
 
 ## 2、ES6中的类和对象
 
@@ -386,7 +386,7 @@ ldh.sex; // undefined  不能通过对象来访问
 
 构造函数方法很好用，但是存在浪费内存的问题。
 
-![image-20221107101802401](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107101802401.png)
+<!-- ![image-20221107101802401](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107101802401.png) -->
 
 - **我们希望所有的对象使用同一个函数，这样就比较节省内存**
 
@@ -440,7 +440,7 @@ ldh.sex; // undefined  不能通过对象来访问
 
 - `_proto_`对象原型的意义就在于**为对象的查找机制提供一个方向，或者说一条路线**，但是它是一个非标准属性，因此实际开发中，不可以使用这个属性，它只是**内部指向原型对象** `prototype`
 
-![image-20221107102451964](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107102451964.png)
+<!-- ![image-20221107102451964](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107102451964.png) -->
 
 - `Star.prototype 和 ldh._proto_` 指向相同
 
@@ -507,7 +507,7 @@ ldh.sex; // undefined  不能通过对象来访问
 
 ### 6、三者关系
 
-![image-20221107103117386](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107103117386.png)
+<!-- ![image-20221107103117386](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107103117386.png) -->
 
 ### 7、原型链查找规则
 
@@ -517,7 +517,7 @@ ldh.sex; // undefined  不能通过对象来访问
 4. 依次类推一直找到Object为止(null)
 5. __ proto __对象原型的意义就在于为对象成员查找机制提供一个方向，或者说一条路线。
 
-![image-20221107103310071](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107103310071.png)
+<!-- ![image-20221107103310071](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107103310071.png) -->
 
 ```html
 <body>
@@ -970,7 +970,7 @@ var fn = new Function('参数1','参数2',.....,'函数体');
 - 所有函数都是 Function 的实例(对象)
 - 函数也属于对象
 
-![image-20221107132217722](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107132217722.png)
+<!-- ![image-20221107132217722](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107132217722.png) -->
 
 ```html
 <body>
@@ -1510,7 +1510,7 @@ call apply bind 总结：
 4. 当我们重新刷新页面，会进入断点调试，Scope 里面会有两个参数（global 全局作用域、local 局部作用域）。
 5. 当执行到 fn2() 时，Scope 里面会多一个 Closure 参数 ，这就表明产生了闭包。
 
-![闭包](C:\Users\谢红尘\笔记\图片\闭包.png)
+<!-- ![闭包](C:\Users\谢红尘\笔记\图片\闭包.png) -->
 
 ### 4、闭包的作用
 
@@ -1575,7 +1575,7 @@ call apply bind 总结：
 </body>
 ```
 
-![点击li输出索引号](C:\Users\谢红尘\笔记\图片\点击li输出索引号.png)
+<!-- ![点击li输出索引号](C:\Users\谢红尘\笔记\图片\点击li输出索引号.png) -->
 
 定时器中的闭包：
 
@@ -1601,7 +1601,7 @@ call apply bind 总结：
 </body>
 ```
 
-![定时器中的闭包](C:\Users\谢红尘\笔记\图片\定时器中的闭包.png)
+<!-- ![定时器中的闭包](C:\Users\谢红尘\笔记\图片\定时器中的闭包.png) -->
 
 ## 10、递归
 
@@ -2080,7 +2080,7 @@ replace(/激情/g,'**');
 
 > ES全称EcmaScript，是脚本语言的规范，而平时经常编写的JavaScript，是EcmaScript的一种实现，所以ES新特性其实就是指的是JavaScript的新特性
 
-![image-20221107195929284](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107195929284.png)
+<!-- ![image-20221107195929284](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107195929284.png) -->
 
 ## let变量
 
@@ -2427,7 +2427,7 @@ function chu(){
 chu(...wives);
 ```
 
-![image-20221107213122630](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107213122630.png)
+<!-- ![image-20221107213122630](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107213122630.png) -->
 
 #### 应用
 
@@ -2440,7 +2440,7 @@ const wife = [...wife1,...wife2];
 console.log(wife);
 ```
 
-![image-20221107213451591](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107213451591.png)
+<!-- ![image-20221107213451591](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107213451591.png) -->
 
 ##### 2、数组的克隆	**浅拷贝**
 
@@ -2450,7 +2450,7 @@ const wife = [...wife1];
 console.log(wife);
 ```
 
-![image-20221107213600211](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107213600211.png)
+<!-- ![image-20221107213600211](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107213600211.png) -->
 
 ##### 3、将伪数组转为真正的数组
 
@@ -2462,7 +2462,7 @@ console.log(divArr);    //  [div,div,div]
 
 ## symbol
 
-![image-20221107224613368](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107224613368.png)
+<!-- ![image-20221107224613368](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107224613368.png) -->
 
 #### 1、创建
 
@@ -2504,7 +2504,7 @@ game[methods.down] = function() {
 console.log(game);
 ```
 
-![image-20221107225232687](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107225232687.png)
+<!-- ![image-20221107225232687](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107225232687.png) -->
 
 ```
 let game = {
@@ -2519,7 +2519,7 @@ let game = {
 console.log(game);
 ```
 
-![image-20221107225635141](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107225635141.png)
+<!-- ![image-20221107225635141](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107225635141.png) -->
 
 #### 3、内置属性
 
@@ -2527,7 +2527,7 @@ console.log(game);
 
 ## 迭代器iterator
 
-![image-20221107225835384](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107225835384.png)
+<!-- ![image-20221107225835384](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107225835384.png) -->
 
 - iterator接口——就是对象里面的一个属性
 
@@ -2538,7 +2538,7 @@ console.log(game);
 
 #### 工作原理
 
-![image-20221107230423611](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107230423611.png)
+<!-- ![image-20221107230423611](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107230423611.png) -->
 
 ```
 const wife = ['妮露','胡桃','宵宫','申鹤'];
@@ -2551,7 +2551,7 @@ console.log(iterator.next());
 console.log(iterator.next());
 ```
 
-![image-20221107230617769](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107230617769.png)
+<!-- ![image-20221107230617769](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107230617769.png) -->
 
 #### 实例
 
@@ -2910,19 +2910,19 @@ console.log(result);
 
 - 返回的是 非Promise 类型，fulfilled就是成功
 
-![image-20221108112905523](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108112905523.png)
+<!-- ![image-20221108112905523](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108112905523.png) -->
 
 - 返回的是 Promise 对象，对象的状态为成功
 
-![image-20221108113249713](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108113249713.png)
+<!-- ![image-20221108113249713](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108113249713.png) -->
 
 - 返回的是 Promise 对象，对象的状态为失败
 
-![image-20221108113500431](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108113500431.png)
+<!-- ![image-20221108113500431](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108113500431.png) -->
 
 - 抛出错误
 
-![image-20221108113556975](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108113556975.png)
+<!-- ![image-20221108113556975](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108113556975.png) -->
 
 ### 链式调用
 
@@ -3003,11 +3003,11 @@ p.catch(function(reason){
 });
 ```
 
-![image-20221108125706920](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108125706920.png)
+<!-- ![image-20221108125706920](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108125706920.png) -->
 
 ## 集合Set
 
-![image-20221108125907793](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108125907793.png)
+<!-- ![image-20221108125907793](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108125907793.png) -->
 
 - `Set`本身是一个构造函数，用来生成 Set 数据结构
 - Set  执行完返回一个对象
@@ -3034,7 +3034,7 @@ console.log(s, typeof s);   //  object
 
 ## Map
 
-![image-20221108131338213](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108131338213.png)
+<!-- ![image-20221108131338213](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108131338213.png) -->
 
 - 它类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键
 
@@ -3068,7 +3068,7 @@ for (let v of m) {
 // console.log(m);
 ```
 
-![image-20221108131918442](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108131918442.png)
+<!-- ![image-20221108131918442](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108131918442.png) -->
 
 ## 数值扩展
 
@@ -3190,7 +3190,7 @@ export function dance() {
 </body>
 ```
 
-![image-20221108142005656](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108142005656.png)
+<!-- ![image-20221108142005656](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108142005656.png) -->
 
 ### 暴露数据语法
 

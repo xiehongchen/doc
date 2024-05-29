@@ -102,7 +102,7 @@ export default withPwa(
         "/前端/html/": [{ text: "HTML", link: "/前端/html/index.md" }],
         "/前端/css/": [{ text: "CSS", link: "/前端/html/index.md" }],
         "/前端/javascript/": [
-          { text: 'javascript', link: '/前端/javascript/JavaScript基础.md' },
+          { text: 'javascript', link: '/前端/javascript/index.md' },
           { text: 'ES6', link: '/前端/javascript/ES6.md' },
           {
             text: 'JavaScript进阶dom和bom',

@@ -2,7 +2,7 @@
 
 > ES全称EcmaScript，是脚本语言的规范，而平时经常编写的JavaScript，是EcmaScript的一种实现，所以ES新特性其实就是指的是JavaScript的新特性
 
-![image-20221107195929284](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107195929284.png)
+<!-- ![image-20221107195929284](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107195929284.png) -->
 
 ## let变量
 
@@ -349,7 +349,7 @@ function chu(){
 chu(...wives);
 ```
 
-![image-20221107213122630](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107213122630.png)
+<!-- ![image-20221107213122630](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107213122630.png) -->
 
 #### 应用
 
@@ -362,7 +362,7 @@ const wife = [...wife1,...wife2];
 console.log(wife);
 ```
 
-![image-20221107213451591](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107213451591.png)
+<!-- ![image-20221107213451591](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107213451591.png) -->
 
 ##### 2、数组的克隆	**浅拷贝**
 
@@ -372,7 +372,7 @@ const wife = [...wife1];
 console.log(wife);
 ```
 
-![image-20221107213600211](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107213600211.png)
+<!-- ![image-20221107213600211](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107213600211.png) -->
 
 ##### 3、将伪数组转为真正的数组
 
@@ -384,7 +384,7 @@ console.log(divArr);    //  [div,div,div]
 
 ## symbol
 
-![image-20221107224613368](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107224613368.png)
+<!-- ![image-20221107224613368](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107224613368.png) -->
 
 #### 1、创建
 
@@ -426,7 +426,7 @@ game[methods.down] = function() {
 console.log(game);
 ```
 
-![image-20221107225232687](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107225232687.png)
+<!-- ![image-20221107225232687](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107225232687.png) -->
 
 ```
 let game = {
@@ -441,7 +441,7 @@ let game = {
 console.log(game);
 ```
 
-![image-20221107225635141](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107225635141.png)
+<!-- ![image-20221107225635141](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107225635141.png) -->
 
 #### 3、内置属性
 
@@ -449,7 +449,7 @@ console.log(game);
 
 ## 迭代器iterator
 
-![image-20221107225835384](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107225835384.png)
+<!-- ![image-20221107225835384](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107225835384.png) -->
 
 - iterator接口——就是对象里面的一个属性
 
@@ -460,7 +460,7 @@ console.log(game);
 
 #### 工作原理
 
-![image-20221107230423611](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107230423611.png)
+<!-- ![image-20221107230423611](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107230423611.png) -->
 
 ```
 const wife = ['妮露','胡桃','宵宫','申鹤'];
@@ -473,7 +473,7 @@ console.log(iterator.next());
 console.log(iterator.next());
 ```
 
-![image-20221107230617769](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107230617769.png)
+<!-- ![image-20221107230617769](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221107230617769.png) -->
 
 #### 实例
 
@@ -832,19 +832,19 @@ console.log(result);
 
 - 返回的是 非Promise 类型，fulfilled就是成功
 
-![image-20221108112905523](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108112905523.png)
+<!-- ![image-20221108112905523](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108112905523.png) -->
 
 - 返回的是 Promise 对象，对象的状态为成功
 
-![image-20221108113249713](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108113249713.png)
+<!-- ![image-20221108113249713](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108113249713.png) -->
 
 - 返回的是 Promise 对象，对象的状态为失败
 
-![image-20221108113500431](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108113500431.png)
+<!-- ![image-20221108113500431](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108113500431.png) -->
 
 - 抛出错误
 
-![image-20221108113556975](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108113556975.png)
+<!-- ![image-20221108113556975](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108113556975.png) -->
 
 ### 链式调用
 
@@ -925,11 +925,11 @@ p.catch(function(reason){
 });
 ```
 
-![image-20221108125706920](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108125706920.png)
+<!-- ![image-20221108125706920](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108125706920.png) -->
 
 ## 集合Set
 
-![image-20221108125907793](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108125907793.png)
+<!-- ![image-20221108125907793](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108125907793.png) -->
 
 - `Set`本身是一个构造函数，用来生成 Set 数据结构
 - Set  执行完返回一个对象
@@ -956,7 +956,7 @@ console.log(s, typeof s);   //  object
 
 #### Map
 
-![image-20221108131338213](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108131338213.png)
+<!-- ![image-20221108131338213](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108131338213.png) -->
 
 - 它类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键
 
@@ -990,4 +990,4 @@ for (let v of m) {
 // console.log(m);
 ```
 
-![image-20221108131918442](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108131918442.png)
+<!-- ![image-20221108131918442](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221108131918442.png) -->
