@@ -94,7 +94,10 @@ export default withPwa(
         },
         {
           text: "后端",
-          items: [{ text: "Node", link: "/后端/node/" }],
+          items: [
+            { text: "Node", link: "/后端/node/" },
+            { text: "Java", link: "/后端/java/" }
+          ],
         },
       ],
       sidebar: {
@@ -145,6 +148,11 @@ export default withPwa(
         ],
         "/前端/react/": [{ text: "React", link: "/前端/react/index.md" }],
         "/后端/node/": [{ text: "node", link: "/后端/node/index.md" }],
+        "/后端/java/": [
+          { text: "java", link: "/后端/java/index.md" },
+          { text: "jdbc", link: "/后端/java/JDBC.md" },
+          { text: 'mysql', link: "/后端/java/MYSQL.md"}
+        ],
         "/其他": [
           { text: "其他", link: "/其他/index.md" },
           { text: "前端学习", link: "/其他/前端学习.md" },
