@@ -41,7 +41,7 @@ Web API是浏览器提供的一套操作浏览器功能和页面元素的API（B
 - 元素：页面中的所有标签都是元素，DOM中使用element表示
 - 节点：网页中的所有内容都是节点（标签、属性、文本、注释等），DOM中使用node表示
 
-<!-- ![image-20221104164711080](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221104164711080.png) -->
+![image-20221104164711080](/images/javascript/image-20221104164711080.png)
 
 ### 2、获取元素
 
@@ -271,7 +271,7 @@ JavaScript使我们有能力创建动态页面，而事件是可以被JavaScript
 
 ##### 常见的鼠标事件
 
-<!-- ![image-20221104165959093](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221104165959093.png) -->
+![image-20221104165959093](/images/javascript/image-20221104165959093.png)
 
 ### 4、操作元素
 
@@ -868,7 +868,7 @@ type、value、checked、selected、disabled
 
 #### 操作元素小结
 
-<!-- ![image-20221104191843684](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221104191843684.png) -->
+![image-20221104191843684](/images/javascript/image-20221104191843684.png)
 
 #### 5、排他思想
 
@@ -1017,7 +1017,7 @@ div.setAttribute('data-index',1);
 
 获取元素通常使用两种方式：
 
-<!-- ![image-20221104222141528](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221104222141528.png) -->
+![image-20221104222141528](/images/javascript/image-20221104222141528.png)
 
 #### 1、节点概述
 
@@ -1381,7 +1381,7 @@ H5提供的新方法：querySelector、querySelectorAll (提倡)
 
 ##### 7、事件操作
 
-<!-- ![image-20221104225457471](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221104225457471.png) -->
+![image-20221104225457471](/images/javascript/image-20221104225457471.png)
 
 ### 7、事件高级
 
@@ -1541,7 +1541,7 @@ eventTarget.onclick = null;
 事件流描述的是从页面中接收事件的顺序
 事件发生时会在元素节点之间按照特定的顺序传播，这个传播过程即DOM事件流
 
-<!-- ![063297f2336f43dfb246930ae877a9ad](C:\Users\谢红尘\笔记\图片\063297f2336f43dfb246930ae877a9ad.png) -->
+![063297f2336f43dfb246930ae877a9ad](/images/javascript/063297f2336f43dfb246930ae877a9ad.png)
 
 
 事件冒泡： IE 最早提出，事件开始时由最具体的元素接收，然后逐级向上传播到到 DOM 最顶层节点的过程。
@@ -1553,7 +1553,7 @@ eventTarget.onclick = null;
 
 我们向水里面扔一块石头，首先它会有一个下降的过程，这个过程就可以理解为从最顶层向事件发生的最具体元素（目标点）的捕获过程；之后会产生泡泡，会在最低点（ 最具体元素）之后漂浮到水面上，这个过程相当于事件冒泡。
 
-<!-- ![51f0146f0e334813b35d9b7075382a33](C:\Users\谢红尘\笔记\图片\51f0146f0e334813b35d9b7075382a33.png) -->
+![51f0146f0e334813b35d9b7075382a33](/images/javascript/51f0146f0e334813b35d9b7075382a33.png)
 
 ##### 1、捕获阶段
 
@@ -1672,7 +1672,7 @@ eventTarget.addEventListener('click', function(event) {
 
 ##### 1、事件对象的常见属性和方法
 
-<!-- ![image-20221105095542139](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221105095542139.png) -->
+![image-20221105095542139](/images/javascript/image-20221105095542139.png)
 
 e.target 和 this 的区别：
 
@@ -1790,7 +1790,7 @@ e.stopPropagation();
 
 #### 5、鼠标事件
 
-<!-- ![image-20221104165959093](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221104165959093.png) -->
+![image-20221104165959093](/images/javascript/image-20221104165959093.png)
 
 ##### 1、禁止鼠标右键与鼠标选中
 
@@ -1821,7 +1821,7 @@ e.stopPropagation();
 
 - 现阶段我们主要是用鼠标事件对象 **MouseEvent** 和键盘事件对象 **KeyboardEvent。**
 
-<!-- ![image-20221105100940317](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221105100940317.png) -->
+![image-20221105100940317](/images/javascript/image-20221105100940317.png)
 
 ```html
 <body>
@@ -1859,7 +1859,7 @@ e.stopPropagation();
 
 - `Keypress` 不识别功能键，但是`keyCode`属性能区分大小写，返回不同的ASCII值
 
-<!-- ![image-20221105110211546](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221105110211546.png) -->
+![image-20221105110211546](/images/javascript/image-20221105110211546.png)
 
 ```html
 <body>
@@ -1904,7 +1904,7 @@ e.stopPropagation();
 
 #### 1、BOM的构成
 
-<!-- ![image-20221105110733309](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221105110733309.png) -->
+![image-20221105110733309](/images/javascript/image-20221105110733309.png)
 
 - BOM 比 DOM 更大。它包含 DOM。
 - window 对象是浏览器的顶级对象，它具有双重角色
@@ -2259,7 +2259,7 @@ window.setInterval(回调函数,[间隔的毫秒数]);
 
 - 异步任务相关回调函数添加到任务队列（也称消息队列）中
 
-<!-- ![image-20221105123528773](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221105123528773.png) -->
+![image-20221105123528773](/images/javascript/image-20221105123528773.png)
 
 **执行机制**
 
@@ -2267,7 +2267,7 @@ window.setInterval(回调函数,[间隔的毫秒数]);
 2. **异步任务**(回调函数)放入任务队列中
 3. 一旦执行栈中的所有同步任务执行完毕，系统就会**按次序读取**任务队列中的异步任务，于是被读取的异步任务**结束等待状态**，**进入执行栈**，开始执行
 
-<!-- ![image-20221105123707668](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221105123707668.png) -->
+![image-20221105123707668](/images/javascript/image-20221105123707668.png)
 
 ```js
 console.log(1);
@@ -2282,7 +2282,7 @@ setTimeout(function() {
 
 执行结果为1、2、3，如果点击了屏幕，那么久根据时间关系，在3秒内点击就click显示在3之前，在3秒后点击click就显示在3之后
 
-<!-- ![eaabe7880146428fb68e6e64f23db40c](C:\Users\谢红尘\笔记\图片\eaabe7880146428fb68e6e64f23db40c.png) -->
+![eaabe7880146428fb68e6e64f23db40c](/images/javascript/eaabe7880146428fb68e6e64f23db40c.png)
 
 同步任务放在执行栈中执行，异步任务由异步进程处理放到任务队列中，执行栈中的任务执行完毕会去任务队列中查看是否有异步任务执行，由于主线程不断的重复获得任务、执行任务、再获取任务、再执行，所以这种机制被称为**事件循环**（ event loop）。
 

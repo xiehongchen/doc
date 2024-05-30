@@ -319,19 +319,19 @@ num++;
 
 ### 比较运算符
 
-<!-- ![image-20221104141136128](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221104141136128.png) -->
+![image-20221104141136128](/images/javascript/image-20221104141136128.png)
 
 ### 逻辑运算符
 
-<!-- ![image-20221104141250367](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221104141250367.png) -->
+![image-20221104141250367](/images/javascript/image-20221104141250367.png)
 
 ### 赋值运算符
 
-<!-- ![image-20221104141319429](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221104141319429.png) -->
+![image-20221104141319429](/images/javascript/image-20221104141319429.png)
 
 ### 运算符优先级
 
-<!-- ![image-20221104141402441](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221104141402441.png) -->
+![image-20221104141402441](/images/javascript/image-20221104141402441.png)
 
 ## 流程控制
 
@@ -720,7 +720,7 @@ Object、Array、Date
 
 ### 堆和栈
 
-<!-- ![image-20221104160909318](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20221104160909318.png) -->
+![image-20221104160909318](/images/javascript/image-20221104160909318.png)
 
 ### 内存分配
 

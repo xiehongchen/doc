@@ -1220,7 +1220,6 @@ ALTER TABLE 表 MODIFY COLUMN 字段名 字段类型 约束;
 
 关于授权的权限列表：
 
-<!-- ![image-20211121231015008](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20211121231015008.png) -->
 
 #### 1、创建用户
 
@@ -1355,7 +1354,6 @@ savepoint 回滚点名;
 
 **事务并发问题**
 
-<!-- ![image-20210928222047959](C:\Users\谢红尘\AppData\Roaming\Typora\typora-user-images\image-20210928222047959.png) -->
 
 **事务并发问题如何解决？**
 
