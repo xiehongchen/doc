@@ -81,7 +81,7 @@ function processFile(filePath, fileName, outputPath) {
   });
 }
 
-readDirectory("src/面试题", "/src")
+readDirectory("src/前端/vue/vue3", "/src")
   .then((res) => {
     console.log("readDirectory", res);
 
