@@ -122,6 +122,7 @@ export function createSidebar() {
       { text: "其他", link: "/其他/index.md" },
       { text: "前端学习", link: "/其他/前端学习.md" },
       { text: "git", link: "/其他/git.md" },
+      { text: "git操作", link: "/其他/git操作.md" },
       { text: "webpack5", link: "/其他/webpack5.md" },
       { text: "下载", link: "/其他/下载.md" },
       {
