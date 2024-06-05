@@ -112,7 +112,10 @@ export function createSidebar() {
       },
     ],
     "/前端/react/": [{ text: "React", link: "/前端/react/index.md" }],
-    "/后端/node/": [{ text: "node", link: "/后端/node/index.md" }],
+    "/后端/node/": [
+      { text: "node", link: "/后端/node/index.md" },
+      { text: "express", link: "/后端/node/express.md" }
+    ],
     "/后端/java/": [
       { text: "java", link: "/后端/java/index.md" },
       { text: "jdbc", link: "/后端/java/JDBC.md" },
