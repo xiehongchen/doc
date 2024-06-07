@@ -81,7 +81,7 @@ function processFile(filePath, fileName, outputPath) {
   });
 }
 
-readDirectory("src/前端/vue/vue3", "/src")
+readDirectory("src/前端", "/src")
   .then((res) => {
     console.log("readDirectory", res);
 

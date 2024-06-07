@@ -47,7 +47,7 @@ export default withPwa(
           },
         },
       },
-      outline: "deep",
+      outline: [1, 6],
       outlineTitle: "当前页导航",
       docFooter: {
         prev: "上一篇",
@@ -84,6 +84,10 @@ export default withPwa(
               text: "React",
               link: "/前端/react/",
             },
+            {
+              text: "工程化",
+              link: "/前端/工程化/",
+            },
           ],
         },
         {
@@ -106,13 +110,6 @@ export default withPwa(
       sidebar: createSidebar(),
 
       socialLinks: [{ icon: "github", link: "https://github.com/xiehongchen" }],
-      // 页脚配置
-      // footer: {
-      //   message:
-      //     '用心去做高质量的专业前端内容网站，欢迎 <a style="color: #0066ff" href="https://github.com/clin211/clin-notes">star ⭐</a> 让更多人发现',
-      //   copyright:
-      //     "MIT License | 版权所有 © 2023-2024 changlin and clin211 contributors",
-      // },
       // github 编辑链接
       editLink: {
         pattern: "https://github.com/xiehongchen/doc/blob/master/src/:path",
