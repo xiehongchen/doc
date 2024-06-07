@@ -81,7 +81,7 @@ function processFile(filePath, fileName, outputPath) {
   });
 }
 
-readDirectory("src/前端", "/src")
+readDirectory("src/其他/Webpack5", "/src")
   .then((res) => {
     console.log("readDirectory", res);
 

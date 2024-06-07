@@ -123,10 +123,14 @@ export function createSidebar() {
     ],
     "/其他/": [
       { text: "其他", link: "/其他/index.md" },
+      { text: "webpack5", collapsed: true, items: [
+        { text: '基础', link: '/其他/Webpack5/基础.md' },
+        { text: '高级', link: '/其他/Webpack5/高级.md' },
+        { text: '项目', link: '/其他/Webpack5/项目.md' }
+      ] },
       { text: "前端学习", link: "/其他/前端学习.md" },
       { text: "git", link: "/其他/git.md" },
       { text: "git操作", link: "/其他/git操作.md" },
-      { text: "webpack5", link: "/其他/webpack5.md" },
       { text: "下载", link: "/其他/下载.md" },
       {
         text: "关于时间的处理&Date对象",
