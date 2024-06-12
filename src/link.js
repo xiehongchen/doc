@@ -81,12 +81,12 @@ function processFile(filePath, fileName, outputPath) {
   });
 }
 
-readDirectory("src/其他/Webpack5", "/src")
+readDirectory("src/前端/javascript/es6", "/src")
   .then((res) => {
     console.log("readDirectory", res);
 
     // 如果index是数字，按照数字排序，否则删除
-    const list = res
+    const list = res.sort((a, b) => a.index - b.index)
       .map((item) => {
         return {
           text: item.name,

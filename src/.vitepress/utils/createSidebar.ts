@@ -58,6 +58,53 @@ export function createSidebar() {
       },
       { text: "ES6", link: "/前端/javascript/ES6.md" },
       {
+        text: "es6",
+        collapsed: true,
+        items: [
+          { text: "1、简介", link: "/前端/javascript/es6/1、简介.md" },
+          {
+            text: "2、let&const",
+            link: "/前端/javascript/es6/2、let&const.md",
+          },
+          {
+            text: "3、变量的解构赋值",
+            link: "/前端/javascript/es6/3、变量的解构赋值.md",
+          },
+          {
+            text: "4、字符串的扩展",
+            link: "/前端/javascript/es6/4、字符串的扩展.md",
+          },
+          {
+            text: "5、字符串的新增方法",
+            link: "/前端/javascript/es6/5、字符串的新增方法.md",
+          },
+          {
+            text: "6、正则的扩展",
+            link: "/前端/javascript/es6/6、正则的扩展.md",
+          },
+          {
+            text: "7、数值的扩展",
+            link: "/前端/javascript/es6/7、数值的扩展.md",
+          },
+          {
+            text: "8、函数的扩展",
+            link: "/前端/javascript/es6/8、函数的扩展.md",
+          },
+          {
+            text: "9、数组的扩展",
+            link: "/前端/javascript/es6/9、数组的扩展.md",
+          },
+          {
+            text: "10、对象的扩展",
+            link: "/前端/javascript/es6/10、对象的扩展.md",
+          },
+          {
+            text: "11、对象的新增方法",
+            link: "/前端/javascript/es6/11、对象的新增方法.md",
+          },
+        ],
+      },
+      {
         text: "JavaScript进阶dom和bom",
         link: "/前端/javascript/JavaScript进阶dom和bom.md",
       },
@@ -114,7 +161,7 @@ export function createSidebar() {
     "/前端/react/": [{ text: "React", link: "/前端/react/index.md" }],
     "/后端/node/": [
       { text: "node", link: "/后端/node/index.md" },
-      { text: "express", link: "/后端/node/express.md" }
+      { text: "express", link: "/后端/node/express.md" },
     ],
     "/后端/java/": [
       { text: "java", link: "/后端/java/index.md" },
@@ -124,11 +171,13 @@ export function createSidebar() {
     "/其他/": [
       { text: "其他", link: "/其他/index.md" },
       {
-        text: "webpack5", collapsed: true, items: [
-          { text: '基础', link: '/其他/Webpack5/基础.md' },
-          { text: '高级', link: '/其他/Webpack5/高级.md' },
-          { text: '项目', link: '/其他/Webpack5/项目.md' }
-        ]
+        text: "webpack5",
+        collapsed: true,
+        items: [
+          { text: "基础", link: "/其他/Webpack5/基础.md" },
+          { text: "高级", link: "/其他/Webpack5/高级.md" },
+          { text: "项目", link: "/其他/Webpack5/项目.md" },
+        ],
       },
       { text: "前端学习", link: "/其他/前端学习.md" },
       { text: "git", link: "/其他/git.md" },
