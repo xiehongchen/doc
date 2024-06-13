@@ -81,7 +81,7 @@ function processFile(filePath, fileName, outputPath) {
   });
 }
 
-readDirectory("src/前端/javascript/es6", "/src")
+readDirectory("src/前端/react", "/src")
   .then((res) => {
     console.log("readDirectory", res);
 
