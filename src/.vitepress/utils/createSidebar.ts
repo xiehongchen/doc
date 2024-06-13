@@ -61,47 +61,61 @@ export function createSidebar() {
         text: "es6",
         collapsed: true,
         items: [
-          { text: "1、简介", link: "/前端/javascript/es6/1、简介.md" },
+          { text: '1、简介', link: '/前端/javascript/es6/1、简介.md' },
+          { text: '2、let&const', link: '/前端/javascript/es6/2、let&const.md' },
+          { text: '3、变量的解构赋值', link: '/前端/javascript/es6/3、变量的解构赋值.md' },
+          { text: '4、字符串的扩展', link: '/前端/javascript/es6/4、字符串的扩展.md' },
+          { text: '5、字符串的新增方法', link: '/前端/javascript/es6/5、字符串的新增方法.md' },
+          { text: '6、正则的扩展', link: '/前端/javascript/es6/6、正则的扩展.md' },
+          { text: '7、数值的扩展', link: '/前端/javascript/es6/7、数值的扩展.md' },
+          { text: '8、函数的扩展', link: '/前端/javascript/es6/8、函数的扩展.md' },
+          { text: '9、数组的扩展', link: '/前端/javascript/es6/9、数组的扩展.md' },
+          { text: '10、对象的扩展', link: '/前端/javascript/es6/10、对象的扩展.md' },
+          { text: '11、对象的新增方法', link: '/前端/javascript/es6/11、对象的新增方法.md' },
+          { text: '12、运算符的扩展', link: '/前端/javascript/es6/12、运算符的扩展.md' },
+          { text: '13、Symbol', link: '/前端/javascript/es6/13、Symbol.md' },
           {
-            text: "2、let&const",
-            link: "/前端/javascript/es6/2、let&const.md",
+            text: '14、Set 和 Map 数据结构',
+            link: '/前端/javascript/es6/14、Set 和 Map 数据结构.md'
+          },
+          { text: '15、Proxy', link: '/前端/javascript/es6/15、Proxy.md' },
+          { text: '16、Reflect', link: '/前端/javascript/es6/16、Reflect.md' },
+          {
+            text: '17、Promise 对象',
+            link: '/前端/javascript/es6/17、Promise 对象.md'
           },
           {
-            text: "3、变量的解构赋值",
-            link: "/前端/javascript/es6/3、变量的解构赋值.md",
+            text: '18、Iterator 和 for...of 循环',
+            link: '/前端/javascript/es6/18、Iterator 和 for...of 循环.md'
           },
           {
-            text: "4、字符串的扩展",
-            link: "/前端/javascript/es6/4、字符串的扩展.md",
+            text: '19、Generator 函数的语法',
+            link: '/前端/javascript/es6/19、Generator 函数的语法.md'
           },
           {
-            text: "5、字符串的新增方法",
-            link: "/前端/javascript/es6/5、字符串的新增方法.md",
+            text: '20、Generator 函数的异步应用',
+            link: '/前端/javascript/es6/20、Generator 函数的异步应用.md'
+          },
+          { text: '21、async 函数', link: '/前端/javascript/es6/21、async 函数.md' },
+          {
+            text: '22、Class 的基本语法',
+            link: '/前端/javascript/es6/22、Class 的基本语法.md'
+          },
+          { text: '23、Class 的继承', link: '/前端/javascript/es6/23、Class 的继承.md' },
+          {
+            text: '24、Module 的语法',
+            link: '/前端/javascript/es6/24、Module 的语法.md'
           },
           {
-            text: "6、正则的扩展",
-            link: "/前端/javascript/es6/6、正则的扩展.md",
+            text: '25、Module 的加载实现',
+            link: '/前端/javascript/es6/25、Module 的加载实现.md'
           },
+          { text: '26、编程风格', link: '/前端/javascript/es6/26、编程风格.md' },
           {
-            text: "7、数值的扩展",
-            link: "/前端/javascript/es6/7、数值的扩展.md",
+            text: '27、读懂 ECMAScript 规格',
+            link: '/前端/javascript/es6/27、读懂 ECMAScript 规格.md'
           },
-          {
-            text: "8、函数的扩展",
-            link: "/前端/javascript/es6/8、函数的扩展.md",
-          },
-          {
-            text: "9、数组的扩展",
-            link: "/前端/javascript/es6/9、数组的扩展.md",
-          },
-          {
-            text: "10、对象的扩展",
-            link: "/前端/javascript/es6/10、对象的扩展.md",
-          },
-          {
-            text: "11、对象的新增方法",
-            link: "/前端/javascript/es6/11、对象的新增方法.md",
-          },
+          { text: '28、异步遍历器', link: '/前端/javascript/es6/28、异步遍历器.md' }
         ],
       },
       {
