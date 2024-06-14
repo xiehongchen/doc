@@ -66,6 +66,7 @@ export default {
   - 基本类型的数据：响应式依然是靠``Object.defineProperty()``的```get```与```set```完成的。
   - 对象类型的数据：内部 <i style="color:gray;font-weight:bold">“ 求助 ”</i> 了Vue3.0中的一个新函数—— ```reactive```函数。
   - 对象类型数据使用 ES6 的 `Proxy` 实现响应式，Vue3 把相关操作封装在 `reactive` 函数中
+  - 所以`const a = ref({})`，a.value返回的是一个proxy对象
   - 按照之前的办法，对于对象数据，应该遍历每一层的属性添加 `getter` 、`setter`，但 Vue3 使用 Proxy 把内部数据一口气监测了
 
 ```html
@@ -104,11 +105,13 @@ export default {
 
 - 作用: 定义一个<strong style="color:#DD5145">对象类型</strong>的响应式数据（基本类型不要用它，要用```ref```函数）
 - 语法：```const 代理对象= reactive(源对象)```接收一个对象（或数组），返回一个<strong style="color:#DD5145">代理对象（Proxy的实例对象，简称proxy对象）</strong>
-- reactive定义的响应式数据是“**深层次的**”。
+- reactive定义的响应式数据是“**深层次的**”。所以响应式对象内的嵌套对象依然是代理对象
 - 内部基于 ES6 的 Proxy 实现，通过**代理对象**操作源对象内部数据进行操作。
 - `reactive` `proxy` 不能直接赋值，否则会破坏响应式对象的
   - 解决方法： 数组可以使用push 加上 解构
   - 添加一个对象，把数组作为一个属性去解决
+- 将`reactive`对象的原始类型属性解构为本地变量时，或者将该属性传递给函数时，我们将丢失响应性连接
+  
 
 
 ```js

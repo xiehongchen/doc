@@ -57,6 +57,8 @@ const app = createApp(App)
 app.mount('#app')
 ```
 
+> 使用createApp函数创建一个新的应用实例，但是需要等到mount才能渲染出来（可以创建多个）
+
 Vue3 支持定义多个根节点，组件的 `<template>` 支持定义多个根节点：
 
 ```html
