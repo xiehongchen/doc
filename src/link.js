@@ -75,18 +75,26 @@ function processFile(filePath, fileName, outputPath) {
       // 删除前4个字符
       const path = filePath.slice(3).replace(/\\/g, "/");
       // 获取text的数字
-      const index = Number(fileName.split("、")[0]);
+      const index = Number(fileName.split("、")[0]) || 0
       resolve({ index, name, path });
     });
   });
 }
 
-readDirectory("src/前端/react", "/src")
+readDirectory("src/前端/typescript", "/src")
   .then((res) => {
     console.log("readDirectory", res);
 
     // 如果index是数字，按照数字排序，否则删除
-    const list = res.sort((a, b) => a.index - b.index)
+    const sort = ['基础类型', '任意类型', '接口和对象类型', '数组类型', '函数扩展', 
+    '类型断言 | 联合类型 | 交叉类型', '内置对象&代码雨', 'Class类', '元组类型', '枚举类型', '类型推论|类型别名', 
+    'never类型', 'symbol类型', '泛型', 'tsconfig.json配置文件', 'namespace命名空间', '三斜线指令', '声明文件d.ts', 
+    'Mixins混入', '装饰器Decorator']
+    const list = res.map(item => {
+      item.index = sort.findIndex(n => n == item.name)
+      return item
+    })
+      .sort((a, b) => a.index - b.index)
       .map((item) => {
         return {
           text: item.name,

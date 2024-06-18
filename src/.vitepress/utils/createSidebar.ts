@@ -187,7 +187,53 @@ export function createSidebar() {
       { text: "隐式转换", link: "/前端/javascript/隐式转换.md" },
     ],
     "/前端/typescript/": [
-      { text: "typescript", link: "/前端/typescript/index.md" },
+      {
+        text: "typescript",
+        collapsed: true,
+        items: [
+          { text: "基础类型", link: "/前端/typescript/index.md" },
+          { text: "任意类型", link: "/前端/typescript/任意类型.md" },
+          {
+            text: "接口和对象类型",
+            link: "/前端/typescript/接口和对象类型.md",
+          },
+          { text: "数组类型", link: "/前端/typescript/数组类型.md" },
+          { text: "函数扩展", link: "/前端/typescript/函数扩展.md" },
+          {
+            text: "类型断言 | 联合类型 | 交叉类型",
+            link: "/前端/typescript/类型断言 | 联合类型 | 交叉类型.md",
+          },
+          {
+            text: "内置对象&代码雨",
+            link: "/前端/typescript/内置对象&代码雨.md",
+          },
+          { text: "Class类", link: "/前端/typescript/Class类.md" },
+          { text: "元组类型", link: "/前端/typescript/元组类型.md" },
+          { text: "枚举类型", link: "/前端/typescript/枚举类型.md" },
+          {
+            text: "类型推论|类型别名",
+            link: "/前端/typescript/类型推论|类型别名.md",
+          },
+          { text: "never类型", link: "/前端/typescript/never类型.md" },
+          { text: "symbol类型", link: "/前端/typescript/symbol类型.md" },
+          { text: "泛型", link: "/前端/typescript/泛型.md" },
+          {
+            text: "tsconfig.json配置文件",
+            link: "/前端/typescript/tsconfig.json配置文件.md",
+          },
+          {
+            text: "namespace命名空间",
+            link: "/前端/typescript/namespace命名空间.md",
+          },
+          { text: "三斜线指令", link: "/前端/typescript/三斜线指令.md" },
+          { text: "声明文件d.ts", link: "/前端/typescript/声明文件d.ts.md" },
+          { text: "Mixins混入", link: "/前端/typescript/Mixins混入.md" },
+          {
+            text: "装饰器Decorator",
+            link: "/前端/typescript/装饰器Decorator.md",
+          },
+        ],
+      },
     ],
     "/前端/vue/": [
       { text: "vue", link: "/前端/vue/index.md" },
