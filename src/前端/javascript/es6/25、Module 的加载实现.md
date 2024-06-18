@@ -50,7 +50,7 @@ HTML 网页中，浏览器通过`<script>`标签加载 JavaScript 脚本。
 
 如果网页有多个`<script type="module">`，它们会按照在页面出现的顺序依次执行。
 
-<script>标签的async属性也可以打开，这时只要加载完成，渲染引擎就会中断渲染立即执行。执行完成后，再恢复渲染。
+`<script>`标签的async属性也可以打开，这时只要加载完成，渲染引擎就会中断渲染立即执行。执行完成后，再恢复渲染。
 
 ```js
 <script type="module" src="./foo.js" async></script>
