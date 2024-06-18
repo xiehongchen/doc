@@ -30,7 +30,7 @@ function modifyCodeBlocks(filePath) {
   const modifiedContent = lines.join('\n');
 
   // 保存修改后的内容到新文件
-  const newFilePath = filePath.replace('test.md', '前端/javascript/es6/28、异步遍历器.md');
+  const newFilePath = filePath.replace('test.md', '前端/javascript/es6/23、Class 的继承.md');
   fs.writeFileSync(newFilePath, modifiedContent, 'utf-8');
   
   return newFilePath;

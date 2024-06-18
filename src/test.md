@@ -1,472 +1,863 @@
-## 同步遍历器的问题
+## 简介
 
-《遍历器》一章说过，Iterator 接口是一种数据遍历的协议，只要调用遍历器对象的`next`方法，就会得到一个对象，表示当前遍历指针所在的那个位置的信息。`next`方法返回的对象的结构是`{value, done}`，其中`value`表示当前的数据的值，`done`是一个布尔值，表示遍历是否结束。
+Class 可以通过`extends`关键字实现继承，让子类继承父类的属性和方法。extends 的写法比 ES5 的原型链继承，要清晰和方便很多。
 
 ```
-function idMaker() {
-  let index = 0;
-
-  return {
-    next: function() {
-      return { value: index++, done: false };
-    }
-  };
+class Point {
 }
 
-const it = idMaker();
-
-it.next().value // 0
-it.next().value // 1
-it.next().value // 2
-// ...
-```
-
-上面代码中，变量`it`是一个遍历器（iterator）。每次调用`it.next()`方法，就返回一个对象，表示当前遍历位置的信息。
-
-这里隐含着一个规定，`it.next()`方法必须是同步的，只要调用就必须立刻返回值。也就是说，一旦执行`it.next()`方法，就必须同步地得到`value`和`done`这两个属性。如果遍历指针正好指向同步操作，当然没有问题，但对于异步操作，就不太合适了。
-
-```
-function idMaker() {
-  let index = 0;
-
-  return {
-    next: function() {
-      return new Promise(function (resolve, reject) {
-        setTimeout(() => {
-          resolve({ value: index++, done: false });
-        }, 1000);
-      });
-    }
-  };
+class ColorPoint extends Point {
 }
 ```
 
-上面代码中，`next()`方法返回的是一个 Promise 对象，这样就不行，不符合 Iterator 协议，只要代码里面包含异步操作都不行。也就是说，Iterator 协议里面`next()`方法只能包含同步操作。
+上面示例中，`Point`是父类，`ColorPoint`是子类，它通过`extends`关键字，继承了`Point`类的所有属性和方法。但是由于没有部署任何代码，所以这两个类完全一样，等于复制了一个`Point`类。
 
-目前的解决方法是，将异步操作包装成 Thunk 函数或者 Promise 对象，即`next()`方法返回值的`value`属性是一个 Thunk 函数或者 Promise 对象，等待以后返回真正的值，而`done`属性则还是同步产生的。
+下面，我们在`ColorPoint`内部加上代码。
 
 ```
-function idMaker() {
-  let index = 0;
+class Point { /* ... */ }
 
-  return {
-    next: function() {
-      return {
-        value: new Promise(resolve => setTimeout(() => resolve(index++), 1000)),
-        done: false
-      };
-    }
-  };
+class ColorPoint extends Point {
+  constructor(x, y, color) {
+    super(x, y); // 调用父类的constructor(x, y)
+    this.color = color;
+  }
+
+  toString() {
+    return this.color + ' ' + super.toString(); // 调用父类的toString()
+  }
+}
+```
+
+上面示例中，`constructor()`方法和`toString()`方法内部，都出现了`super`关键字。`super`在这里表示父类的构造函数，用来新建一个父类的实例对象。
+
+ES6 规定，子类必须在`constructor()`方法中调用`super()`，否则就会报错。这是因为子类自己的`this`对象，必须先通过父类的构造函数完成塑造，得到与父类同样的实例属性和方法，然后再对其进行加工，添加子类自己的实例属性和方法。如果不调用`super()`方法，子类就得不到自己的`this`对象。
+
+```
+class Point { /* ... */ }
+
+class ColorPoint extends Point {
+  constructor() {
+  }
 }
 
-const it = idMaker();
-
-it.next().value.then(o => console.log(o)) // 0
-it.next().value.then(o => console.log(o)) // 1
-it.next().value.then(o => console.log(o)) // 2
-// ...
+let cp = new ColorPoint(); // ReferenceError
 ```
 
-上面代码中，`value`属性的返回值是一个 Promise 对象，用来放置异步操作。但是这样写很麻烦，不太符合直觉，语义也比较绕。
+上面代码中，`ColorPoint`继承了父类`Point`，但是它的构造函数没有调用`super()`，导致新建实例时报错。
 
-ES2018 [引入](https://github.com/tc39/proposal-async-iteration)了“异步遍历器”（Async Iterator），为异步操作提供原生的遍历器接口，即`value`和`done`这两个属性都是异步产生。
+为什么子类的构造函数，一定要调用`super()`？原因就在于 ES6 的继承机制，与 ES5 完全不同。ES5 的继承机制，是先创造一个独立的子类的实例对象，然后再将父类的方法添加到这个对象上面，即“实例在前，继承在后”。ES6 的继承机制，则是先将父类的属性和方法，加到一个空的对象上面，然后再将该对象作为子类的实例，即“继承在前，实例在后”。这就是为什么 ES6 的继承必须先调用`super()`方法，因为这一步会生成一个继承父类的`this`对象，没有这一步就无法继承父类。
 
-## 异步遍历的接口
-
-异步遍历器的最大的语法特点，就是调用遍历器的`next`方法，返回的是一个 Promise 对象。
+注意，这意味着新建子类实例时，父类的构造函数必定会先运行一次。
 
 ```
-asyncIterator
-  .next()
-  .then(
-    ({ value, done }) => /* ... */
-  );
+class Foo {
+  constructor() {
+    console.log(1);
+  }
+}
+
+class Bar extends Foo {
+  constructor() {
+    super();
+    console.log(2);
+  }
+}
+
+const bar = new Bar();
+// 1
+// 2
 ```
 
-上面代码中，`asyncIterator`是一个异步遍历器，调用`next`方法以后，返回一个 Promise 对象。因此，可以使用`then`方法指定，这个 Promise 对象的状态变为`resolve`以后的回调函数。回调函数的参数，则是一个具有`value`和`done`两个属性的对象，这个跟同步遍历器是一样的。
+上面示例中，子类 Bar 新建实例时，会输出1和2。原因就是子类构造函数调用`super()`时，会执行一次父类构造函数。
 
-我们知道，一个对象的同步遍历器的接口，部署在`Symbol.iterator`属性上面。同样地，对象的异步遍历器接口，部署在`Symbol.asyncIterator`属性上面。不管是什么样的对象，只要它的`Symbol.asyncIterator`属性有值，就表示应该对它进行异步遍历。
-
-下面是一个异步遍历器的例子。
+另一个需要注意的地方是，在子类的构造函数中，只有调用`super()`之后，才可以使用`this`关键字，否则会报错。这是因为子类实例的构建，必须先完成父类的继承，只有`super()`方法才能让子类实例继承父类。
 
 ```
-const asyncIterable = createAsyncIterable(['a', 'b']);
-const asyncIterator = asyncIterable[Symbol.asyncIterator]();
+class Point {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+}
 
-asyncIterator
-.next()
-.then(iterResult1 => {
-  console.log(iterResult1); // { value: 'a', done: false }
-  return asyncIterator.next();
-})
-.then(iterResult2 => {
-  console.log(iterResult2); // { value: 'b', done: false }
-  return asyncIterator.next();
-})
-.then(iterResult3 => {
-  console.log(iterResult3); // { value: undefined, done: true }
+class ColorPoint extends Point {
+  constructor(x, y, color) {
+    this.color = color; // ReferenceError
+    super(x, y);
+    this.color = color; // 正确
+  }
+}
+```
+
+上面代码中，子类的`constructor()`方法没有调用`super()`之前，就使用`this`关键字，结果报错，而放在`super()`之后就是正确的。
+
+如果子类没有定义`constructor()`方法，这个方法会默认添加，并且里面会调用`super()`。也就是说，不管有没有显式定义，任何一个子类都有`constructor()`方法。
+
+```
+class ColorPoint extends Point {
+}
+
+// 等同于
+class ColorPoint extends Point {
+  constructor(...args) {
+    super(...args);
+  }
+}
+```
+
+有了子类的定义，就可以生成子类的实例了。
+
+```
+let cp = new ColorPoint(25, 8, 'green');
+
+cp instanceof ColorPoint // true
+cp instanceof Point // true
+```
+
+上面示例中，实例对象`cp`同时是`ColorPoint`和`Point`两个类的实例，这与 ES5 的行为完全一致。
+
+## 私有属性和私有方法的继承
+
+父类所有的属性和方法，都会被子类继承，除了私有的属性和方法。
+
+子类无法继承父类的私有属性，或者说，私有属性只能在定义它的 class 里面使用。
+
+```
+class Foo {
+  #p = 1;
+  #m() {
+    console.log('hello');
+  }
+}
+
+class Bar extends Foo {
+  constructor() {
+    super();
+    console.log(this.#p); // 报错
+    this.#m(); // 报错
+  }
+}
+```
+
+上面示例中，子类 Bar 调用父类 Foo 的私有属性或私有方法，都会报错。
+
+如果父类定义了私有属性的读写方法，子类就可以通过这些方法，读写私有属性。
+
+```
+class Foo {
+  #p = 1;
+  getP() {
+    return this.#p;
+  }
+}
+
+class Bar extends Foo {
+  constructor() {
+    super();
+    console.log(this.getP()); // 1
+  }
+}
+```
+
+上面示例中，`getP()`是父类用来读取私有属性的方法，通过该方法，子类就可以读到父类的私有属性。
+
+## 静态属性和静态方法的继承
+
+父类的静态属性和静态方法，也会被子类继承。
+
+```
+class A {
+  static hello() {
+    console.log('hello world');
+  }
+}
+
+class B extends A {
+}
+
+B.hello()  // hello world
+```
+
+上面代码中，`hello()`是`A`类的静态方法，`B`继承`A`，也继承了`A`的静态方法。
+
+注意，静态属性是通过浅拷贝实现继承的。
+
+```
+class A { static foo = 100; }
+class B extends A {
+  constructor() {
+    super();
+    B.foo--;
+  }
+}
+
+const b = new B();
+B.foo // 99
+A.foo // 100
+```
+
+上面示例中，`foo`是 A 类的静态属性，B 类继承了 A 类，因此也继承了这个属性。但是，在 B 类内部操作`B.foo`这个静态属性，影响不到`A.foo`，原因就是 B 类继承静态属性时，会采用浅拷贝，拷贝父类静态属性的值，因此`A.foo`和`B.foo`是两个彼此独立的属性。
+
+但是，由于这种拷贝是浅拷贝，如果父类的静态属性的值是一个对象，那么子类的静态属性也会指向这个对象，因为浅拷贝只会拷贝对象的内存地址。
+
+```
+class A {
+  static foo = { n: 100 };
+}
+
+class B extends A {
+  constructor() {
+    super();
+    B.foo.n--;
+  }
+}
+
+const b = new B();
+B.foo.n // 99
+A.foo.n // 99
+```
+
+上面示例中，`A.foo`的值是一个对象，浅拷贝导致`B.foo`和`A.foo`指向同一个对象。所以，子类`B`修改这个对象的属性值，会影响到父类`A`。
+
+## Object.getPrototypeOf()
+
+`Object.getPrototypeOf()`方法可以用来从子类上获取父类。
+
+```
+class Point { /*...*/ }
+
+class ColorPoint extends Point { /*...*/ }
+
+Object.getPrototypeOf(ColorPoint) === Point
+// true
+```
+
+因此，可以使用这个方法判断，一个类是否继承了另一个类。
+
+## super 关键字
+
+`super`这个关键字，既可以当作函数使用，也可以当作对象使用。在这两种情况下，它的用法完全不同。
+
+第一种情况，`super`作为函数调用时，代表父类的构造函数。ES6 要求，子类的构造函数必须执行一次`super()`函数。
+
+```
+class A {}
+
+class B extends A {
+  constructor() {
+    super();
+  }
+}
+```
+
+上面代码中，子类`B`的构造函数之中的`super()`，代表调用父类的构造函数。这是必须的，否则报错。
+
+调用`super()`的作用是形成子类的`this`对象，把父类的实例属性和方法放到这个`this`对象上面。子类在调用`super()`之前，是没有`this`对象的，任何对`this`的操作都要放在`super()`的后面。
+
+注意，这里的`super`虽然代表了父类的构造函数，但是因为返回的是子类的`this`（即子类的实例对象），所以`super`内部的`this`代表子类的实例，而不是父类的实例，这里的`super()`相当于`A.prototype.constructor.call(this)`（在子类的`this`上运行父类的构造函数）。
+
+```
+class A {
+  constructor() {
+    console.log(new.target.name);
+  }
+}
+class B extends A {
+  constructor() {
+    super();
+  }
+}
+new A() // A
+new B() // B
+```
+
+上面示例中，`new.target`指向当前正在执行的函数。可以看到，在`super()`执行时（`new B()`），它指向的是子类`B`的构造函数，而不是父类`A`的构造函数。也就是说，`super()`内部的`this`指向的是`B`。
+
+不过，由于`super()`在子类构造方法中执行时，子类的属性和方法还没有绑定到`this`，所以如果存在同名属性，此时拿到的是父类的属性。
+
+```
+class A {
+  name = 'A';
+  constructor() {
+    console.log('My name is ' + this.name);
+  }
+}
+
+class B extends A {
+  name = 'B';
+}
+
+const b = new B(); // My name is A
+```
+
+上面示例中，最后一行输出的是`A`，而不是`B`，原因就在于`super()`执行时，`B`的`name`属性还没有绑定到`this`，所以`this.name`拿到的是`A`类的`name`属性。
+
+作为函数时，`super()`只能用在子类的构造函数之中，用在其他地方就会报错。
+
+```
+class A {}
+
+class B extends A {
+  m() {
+    super(); // 报错
+  }
+}
+```
+
+上面代码中，`super()`用在`B`类的`m`方法之中，就会造成语法错误。
+
+第二种情况，`super`作为对象时，在普通方法中，指向父类的原型对象；在静态方法中，指向父类。
+
+```
+class A {
+  p() {
+    return 2;
+  }
+}
+
+class B extends A {
+  constructor() {
+    super();
+    console.log(super.p()); // 2
+  }
+}
+
+let b = new B();
+```
+
+上面代码中，子类`B`当中的`super.p()`，就是将`super`当作一个对象使用。这时，`super`在普通方法之中，指向`A.prototype`，所以`super.p()`就相当于`A.prototype.p()`。
+
+这里需要注意，由于`super`指向父类的原型对象，所以定义在父类实例上的方法或属性，是无法通过`super`调用的。
+
+```
+class A {
+  constructor() {
+    this.p = 2;
+  }
+}
+
+class B extends A {
+  get m() {
+    return super.p;
+  }
+}
+
+let b = new B();
+b.m // undefined
+```
+
+上面代码中，`p`是父类`A`实例的属性，`super.p`就引用不到它。
+
+如果属性定义在父类的原型对象上，`super`就可以取到。
+
+```
+class A {}
+A.prototype.x = 2;
+
+class B extends A {
+  constructor() {
+    super();
+    console.log(super.x) // 2
+  }
+}
+
+let b = new B();
+```
+
+上面代码中，属性`x`是定义在`A.prototype`上面的，所以`super.x`可以取到它的值。
+
+ES6 规定，在子类普通方法中通过`super`调用父类的方法时，方法内部的`this`指向当前的子类实例。
+
+```
+class A {
+  constructor() {
+    this.x = 1;
+  }
+  print() {
+    console.log(this.x);
+  }
+}
+
+class B extends A {
+  constructor() {
+    super();
+    this.x = 2;
+  }
+  m() {
+    super.print();
+  }
+}
+
+let b = new B();
+b.m() // 2
+```
+
+上面代码中，`super.print()`虽然调用的是`A.prototype.print()`，但是`A.prototype.print()`内部的`this`指向子类`B`的实例，导致输出的是`2`，而不是`1`。也就是说，实际上执行的是`super.print.call(this)`。
+
+由于`this`指向子类实例，所以如果通过`super`对某个属性赋值，这时`super`就是`this`，赋值的属性会变成子类实例的属性。
+
+```
+class A {
+  constructor() {
+    this.x = 1;
+  }
+}
+
+class B extends A {
+  constructor() {
+    super();
+    this.x = 2;
+    super.x = 3;
+    console.log(super.x); // undefined
+    console.log(this.x); // 3
+  }
+}
+
+let b = new B();
+```
+
+上面代码中，`super.x`赋值为`3`，这时等同于对`this.x`赋值为`3`。而当读取`super.x`的时候，读的是`A.prototype.x`，所以返回`undefined`。
+
+如果`super`作为对象，用在静态方法之中，这时`super`将指向父类，而不是父类的原型对象。
+
+```
+class Parent {
+  static myMethod(msg) {
+    console.log('static', msg);
+  }
+
+  myMethod(msg) {
+    console.log('instance', msg);
+  }
+}
+
+class Child extends Parent {
+  static myMethod(msg) {
+    super.myMethod(msg);
+  }
+
+  myMethod(msg) {
+    super.myMethod(msg);
+  }
+}
+
+Child.myMethod(1); // static 1
+
+var child = new Child();
+child.myMethod(2); // instance 2
+```
+
+上面代码中，`super`在静态方法之中指向父类，在普通方法之中指向父类的原型对象。
+
+另外，在子类的静态方法中通过`super`调用父类的方法时，方法内部的`this`指向当前的子类，而不是子类的实例。
+
+```
+class A {
+  constructor() {
+    this.x = 1;
+  }
+  static print() {
+    console.log(this.x);
+  }
+}
+
+class B extends A {
+  constructor() {
+    super();
+    this.x = 2;
+  }
+  static m() {
+    super.print();
+  }
+}
+
+B.x = 3;
+B.m() // 3
+```
+
+上面代码中，静态方法`B.m`里面，`super.print`指向父类的静态方法。这个方法里面的`this`指向的是`B`，而不是`B`的实例。
+
+注意，使用`super`的时候，必须显式指定是作为函数、还是作为对象使用，否则会报错。
+
+```
+class A {}
+
+class B extends A {
+  constructor() {
+    super();
+    console.log(super); // 报错
+  }
+}
+```
+
+上面代码中，`console.log(super)`当中的`super`，无法看出是作为函数使用，还是作为对象使用，所以 JavaScript 引擎解析代码的时候就会报错。这时，如果能清晰地表明`super`的数据类型，就不会报错。
+
+```
+class A {}
+
+class B extends A {
+  constructor() {
+    super();
+    console.log(super.valueOf() instanceof B); // true
+  }
+}
+
+let b = new B();
+```
+
+上面代码中，`super.valueOf()`表明`super`是一个对象，因此就不会报错。同时，由于`super`使得`this`指向`B`的实例，所以`super.valueOf()`返回的是一个`B`的实例。
+
+最后，由于对象总是继承其他对象的，所以可以在任意一个对象中，使用`super`关键字。
+
+```
+var obj = {
+  toString() {
+    return "MyObject: " + super.toString();
+  }
+};
+
+obj.toString(); // MyObject: [object Object]
+```
+
+## 类的 prototype 属性和__proto__属性
+
+大多数浏览器的 ES5 实现之中，每一个对象都有`__proto__`属性，指向对应的构造函数的`prototype`属性。Class 作为构造函数的语法糖，同时有`prototype`属性和`__proto__`属性，因此同时存在两条继承链。
+
+（1）子类的`__proto__`属性，表示构造函数的继承，总是指向父类。
+
+（2）子类`prototype`属性的`__proto__`属性，表示方法的继承，总是指向父类的`prototype`属性。
+
+```
+class A {
+}
+
+class B extends A {
+}
+
+B.__proto__ === A // true
+B.prototype.__proto__ === A.prototype // true
+```
+
+上面代码中，子类`B`的`__proto__`属性指向父类`A`，子类`B`的`prototype`属性的`__proto__`属性指向父类`A`的`prototype`属性。
+
+这样的结果是因为，类的继承是按照下面的模式实现的。
+
+```
+class A {
+}
+
+class B {
+}
+
+// B 的实例继承 A 的实例
+Object.setPrototypeOf(B.prototype, A.prototype);
+
+// B 继承 A 的静态属性
+Object.setPrototypeOf(B, A);
+
+const b = new B();
+```
+
+《对象的扩展》一章给出过`Object.setPrototypeOf`方法的实现。
+
+```
+Object.setPrototypeOf = function (obj, proto) {
+  obj.__proto__ = proto;
+  return obj;
+}
+```
+
+因此，就得到了上面的结果。
+
+```
+Object.setPrototypeOf(B.prototype, A.prototype);
+// 等同于
+B.prototype.__proto__ = A.prototype;
+
+Object.setPrototypeOf(B, A);
+// 等同于
+B.__proto__ = A;
+```
+
+这两条继承链，可以这样理解：作为一个对象，子类（`B`）的原型（`__proto__`属性）是父类（`A`）；作为一个构造函数，子类（`B`）的原型对象（`prototype`属性）是父类的原型对象（`prototype`属性）的实例。
+
+```
+B.prototype = Object.create(A.prototype);
+// 等同于
+B.prototype.__proto__ = A.prototype;
+```
+
+`extends`关键字后面可以跟多种类型的值。
+
+```
+class B extends A {
+}
+```
+
+上面代码的`A`，只要是一个有`prototype`属性的函数，就能被`B`继承。由于函数都有`prototype`属性（除了`Function.prototype`函数），因此`A`可以是任意函数。
+
+下面，讨论两种情况。第一种，子类继承`Object`类。
+
+```
+class A extends Object {
+}
+
+A.__proto__ === Object // true
+A.prototype.__proto__ === Object.prototype // true
+```
+
+这种情况下，`A`其实就是构造函数`Object`的复制，`A`的实例就是`Object`的实例。
+
+第二种情况，不存在任何继承。
+
+```
+class A {
+}
+
+A.__proto__ === Function.prototype // true
+A.prototype.__proto__ === Object.prototype // true
+```
+
+这种情况下，`A`作为一个基类（即不存在任何继承），就是一个普通函数，所以直接继承`Function.prototype`。但是，`A`调用后返回一个空对象（即`Object`实例），所以`A.prototype.__proto__`指向构造函数（`Object`）的`prototype`属性。
+
+### 实例的 __proto__ 属性
+
+子类实例的`__proto__`属性的`__proto__`属性，指向父类实例的`__proto__`属性。也就是说，子类的原型的原型，是父类的原型。
+
+```
+var p1 = new Point(2, 3);
+var p2 = new ColorPoint(2, 3, 'red');
+
+p2.__proto__ === p1.__proto__ // false
+p2.__proto__.__proto__ === p1.__proto__ // true
+```
+
+上面代码中，`ColorPoint`继承了`Point`，导致前者原型的原型是后者的原型。
+
+因此，通过子类实例的`__proto__.__proto__`属性，可以修改父类实例的行为。
+
+```
+p2.__proto__.__proto__.printName = function () {
+  console.log('Ha');
+};
+
+p1.printName() // "Ha"
+```
+
+上面代码在`ColorPoint`的实例`p2`上向`Point`类添加方法，结果影响到了`Point`的实例`p1`。
+
+## 原生构造函数的继承
+
+原生构造函数是指语言内置的构造函数，通常用来生成数据结构。ECMAScript 的原生构造函数大致有下面这些。
+
+- Boolean()
+- Number()
+- String()
+- Array()
+- Date()
+- Function()
+- RegExp()
+- Error()
+- Object()
+
+以前，这些原生构造函数是无法继承的，比如，不能自己定义一个`Array`的子类。
+
+```
+function MyArray() {
+  Array.apply(this, arguments);
+}
+
+MyArray.prototype = Object.create(Array.prototype, {
+  constructor: {
+    value: MyArray,
+    writable: true,
+    configurable: true,
+    enumerable: true
+  }
 });
 ```
 
-上面代码中，异步遍历器其实返回了两次值。第一次调用的时候，返回一个 Promise 对象；等到 Promise 对象`resolve`了，再返回一个表示当前数据成员信息的对象。这就是说，异步遍历器与同步遍历器最终行为是一致的，只是会先返回 Promise 对象，作为中介。
-
-由于异步遍历器的`next`方法，返回的是一个 Promise 对象。因此，可以把它放在`await`命令后面。
+上面代码定义了一个继承 Array 的`MyArray`类。但是，这个类的行为与`Array`完全不一致。
 
 ```
-async function f() {
-  const asyncIterable = createAsyncIterable(['a', 'b']);
-  const asyncIterator = asyncIterable[Symbol.asyncIterator]();
-  console.log(await asyncIterator.next());
-  // { value: 'a', done: false }
-  console.log(await asyncIterator.next());
-  // { value: 'b', done: false }
-  console.log(await asyncIterator.next());
-  // { value: undefined, done: true }
-}
+var colors = new MyArray();
+colors[0] = "red";
+colors.length  // 0
+
+colors.length = 0;
+colors[0]  // "red"
 ```
 
-上面代码中，`next`方法用`await`处理以后，就不必使用`then`方法了。整个流程已经很接近同步处理了。
+之所以会发生这种情况，是因为子类无法获得原生构造函数的内部属性，通过`Array.apply()`或者分配给原型对象都不行。原生构造函数会忽略`apply`方法传入的`this`，也就是说，原生构造函数的`this`无法绑定，导致拿不到内部属性。
 
-注意，异步遍历器的`next`方法是可以连续调用的，不必等到上一步产生的 Promise 对象`resolve`以后再调用。这种情况下，`next`方法会累积起来，自动按照每一步的顺序运行下去。下面是一个例子，把所有的`next`方法放在`Promise.all`方法里面。
+ES5 是先新建子类的实例对象`this`，再将父类的属性添加到子类上，由于父类的内部属性无法获取，导致无法继承原生的构造函数。比如，`Array`构造函数有一个内部属性`[[DefineOwnProperty]]`，用来定义新属性时，更新`length`属性，这个内部属性无法在子类获取，导致子类的`length`属性行为不正常。
 
-```
-const asyncIterable = createAsyncIterable(['a', 'b']);
-const asyncIterator = asyncIterable[Symbol.asyncIterator]();
-const [{value: v1}, {value: v2}] = await Promise.all([
-  asyncIterator.next(), asyncIterator.next()
-]);
-
-console.log(v1, v2); // a b
-```
-
-另一种用法是一次性调用所有的`next`方法，然后`await`最后一步操作。
+下面的例子中，我们想让一个普通对象继承`Error`对象。
 
 ```
-async function runner() {
-  const writer = openFile('someFile.txt');
-  writer.next('hello');
-  writer.next('world');
-  await writer.return();
-}
+var e = {};
 
-runner();
+Object.getOwnPropertyNames(Error.call(e))
+// [ 'stack' ]
+
+Object.getOwnPropertyNames(e)
+// []
 ```
 
-## for await...of
+上面代码中，我们想通过`Error.call(e)`这种写法，让普通对象`e`具有`Error`对象的实例属性。但是，`Error.call()`完全忽略传入的第一个参数，而是返回一个新对象，`e`本身没有任何变化。这证明了`Error.call(e)`这种写法，无法继承原生构造函数。
 
-前面介绍过，`for...of`循环用于遍历同步的 Iterator 接口。新引入的`for await...of`循环，则是用于遍历异步的 Iterator 接口。
+ES6 允许继承原生构造函数定义子类，因为 ES6 是先新建父类的实例对象`this`，然后再用子类的构造函数修饰`this`，使得父类的所有行为都可以继承。下面是一个继承`Array`的例子。
 
 ```
-async function f() {
-  for await (const x of createAsyncIterable(['a', 'b'])) {
-    console.log(x);
+class MyArray extends Array {
+  constructor(...args) {
+    super(...args);
   }
 }
-// a
-// b
+
+var arr = new MyArray();
+arr[0] = 12;
+arr.length // 1
+
+arr.length = 0;
+arr[0] // undefined
 ```
 
-上面代码中，`createAsyncIterable()`返回一个拥有异步遍历器接口的对象，`for...of`循环自动调用这个对象的异步遍历器的`next`方法，会得到一个 Promise 对象。`await`用来处理这个 Promise 对象，一旦`resolve`，就把得到的值（`x`）传入`for...of`的循环体。
+上面代码定义了一个`MyArray`类，继承了`Array`构造函数，因此就可以从`MyArray`生成数组的实例。这意味着，ES6 可以自定义原生数据结构（比如`Array`、`String`等）的子类，这是 ES5 无法做到的。
 
-`for await...of`循环的一个用途，是部署了 asyncIterable 操作的异步接口，可以直接放入这个循环。
+上面这个例子也说明，`extends`关键字不仅可以用来继承类，还可以用来继承原生的构造函数。因此可以在原生数据结构的基础上，定义自己的数据结构。下面就是定义了一个带版本功能的数组。
 
 ```
-let body = '';
-
-async function f() {
-  for await(const data of req) body += data;
-  const parsed = JSON.parse(body);
-  console.log('got', parsed);
+class VersionedArray extends Array {
+  constructor() {
+    super();
+    this.history = [[]];
+  }
+  commit() {
+    this.history.push(this.slice());
+  }
+  revert() {
+    this.splice(0, this.length, ...this.history[this.history.length - 1]);
+  }
 }
+
+var x = new VersionedArray();
+
+x.push(1);
+x.push(2);
+x // [1, 2]
+x.history // [[]]
+
+x.commit();
+x.history // [[], [1, 2]]
+
+x.push(3);
+x // [1, 2, 3]
+x.history // [[], [1, 2]]
+
+x.revert();
+x // [1, 2]
 ```
 
-上面代码中，`req`是一个 asyncIterable 对象，用来异步读取数据。可以看到，使用`for await...of`循环以后，代码会非常简洁。
+上面代码中，`VersionedArray`会通过`commit`方法，将自己的当前状态生成一个版本快照，存入`history`属性。`revert`方法用来将数组重置为最新一次保存的版本。除此之外，`VersionedArray`依然是一个普通数组，所有原生的数组方法都可以在它上面调用。
 
-如果`next`方法返回的 Promise 对象被`reject`，`for await...of`就会报错，要用`try...catch`捕捉。
+下面是一个自定义`Error`子类的例子，可以用来定制报错时的行为。
 
 ```
-async function () {
-  try {
-    for await (const x of createRejectingIterable()) {
-      console.log(x);
+class ExtendableError extends Error {
+  constructor(message) {
+    super();
+    this.message = message;
+    this.stack = (new Error()).stack;
+    this.name = this.constructor.name;
+  }
+}
+
+class MyError extends ExtendableError {
+  constructor(m) {
+    super(m);
+  }
+}
+
+var myerror = new MyError('ll');
+myerror.message // "ll"
+myerror instanceof Error // true
+myerror.name // "MyError"
+myerror.stack
+// Error
+//     at MyError.ExtendableError
+//     ...
+```
+
+注意，继承`Object`的子类，有一个[行为差异](http://stackoverflow.com/questions/36203614/super-does-not-pass-arguments-when-instantiating-a-class-extended-from-object)。
+
+```
+class NewObj extends Object{
+  constructor(){
+    super(...arguments);
+  }
+}
+var o = new NewObj({attr: true});
+o.attr === true  // false
+```
+
+上面代码中，`NewObj`继承了`Object`，但是无法通过`super`方法向父类`Object`传参。这是因为 ES6 改变了`Object`构造函数的行为，一旦发现`Object`方法不是通过`new Object()`这种形式调用，ES6 规定`Object`构造函数会忽略参数。
+
+## Mixin 模式的实现
+
+Mixin 指的是多个对象合成一个新的对象，新对象具有各个组成成员的接口。它的最简单实现如下。
+
+```
+const a = {
+  a: 'a'
+};
+const b = {
+  b: 'b'
+};
+const c = {...a, ...b}; // {a: 'a', b: 'b'}
+```
+
+上面代码中，`c`对象是`a`对象和`b`对象的合成，具有两者的接口。
+
+下面是一个更完备的实现，将多个类的接口“混入”（mix in）另一个类。
+
+```
+function mix(...mixins) {
+  class Mix {
+    constructor() {
+      for (let mixin of mixins) {
+        copyProperties(this, new mixin()); // 拷贝实例属性
+      }
     }
-  } catch (e) {
-    console.error(e);
   }
-}
-```
 
-注意，`for await...of`循环也可以用于同步遍历器。
-
-```
-(async function () {
-  for await (const x of ['a', 'b']) {
-    console.log(x);
+  for (let mixin of mixins) {
+    copyProperties(Mix, mixin); // 拷贝静态属性
+    copyProperties(Mix.prototype, mixin.prototype); // 拷贝原型属性
   }
-})();
-// a
-// b
-```
 
-Node v10 支持异步遍历器，Stream 就部署了这个接口。下面是读取文件的传统写法与异步遍历器写法的差异。
-
-```
-// 传统写法
-function main(inputFilePath) {
-  const readStream = fs.createReadStream(
-    inputFilePath,
-    { encoding: 'utf8', highWaterMark: 1024 }
-  );
-  readStream.on('data', (chunk) => {
-    console.log('>>> '+chunk);
-  });
-  readStream.on('end', () => {
-    console.log('### DONE ###');
-  });
+  return Mix;
 }
 
-// 异步遍历器写法
-async function main(inputFilePath) {
-  const readStream = fs.createReadStream(
-    inputFilePath,
-    { encoding: 'utf8', highWaterMark: 1024 }
-  );
-
-  for await (const chunk of readStream) {
-    console.log('>>> '+chunk);
-  }
-  console.log('### DONE ###');
-}
-```
-
-## 异步 Generator 函数
-
-就像 Generator 函数返回一个同步遍历器对象一样，异步 Generator 函数的作用，是返回一个异步遍历器对象。
-
-在语法上，异步 Generator 函数就是`async`函数与 Generator 函数的结合。
-
-```
-async function* gen() {
-  yield 'hello';
-}
-const genObj = gen();
-genObj.next().then(x => console.log(x));
-// { value: 'hello', done: false }
-```
-
-上面代码中，`gen`是一个异步 Generator 函数，执行后返回一个异步 Iterator 对象。对该对象调用`next`方法，返回一个 Promise 对象。
-
-异步遍历器的设计目的之一，就是 Generator 函数处理同步操作和异步操作时，能够使用同一套接口。
-
-```
-// 同步 Generator 函数
-function* map(iterable, func) {
-  const iter = iterable[Symbol.iterator]();
-  while (true) {
-    const {value, done} = iter.next();
-    if (done) break;
-    yield func(value);
-  }
-}
-
-// 异步 Generator 函数
-async function* map(iterable, func) {
-  const iter = iterable[Symbol.asyncIterator]();
-  while (true) {
-    const {value, done} = await iter.next();
-    if (done) break;
-    yield func(value);
-  }
-}
-```
-
-上面代码中，`map`是一个 Generator 函数，第一个参数是可遍历对象`iterable`，第二个参数是一个回调函数`func`。`map`的作用是将`iterable`每一步返回的值，使用`func`进行处理。上面有两个版本的`map`，前一个处理同步遍历器，后一个处理异步遍历器，可以看到两个版本的写法基本上是一致的。
-
-下面是另一个异步 Generator 函数的例子。
-
-```
-async function* readLines(path) {
-  let file = await fileOpen(path);
-
-  try {
-    while (!file.EOF) {
-      yield await file.readLine();
+function copyProperties(target, source) {
+  for (let key of Reflect.ownKeys(source)) {
+    if ( key !== 'constructor'
+      && key !== 'prototype'
+      && key !== 'name'
+    ) {
+      let desc = Object.getOwnPropertyDescriptor(source, key);
+      Object.defineProperty(target, key, desc);
     }
-  } finally {
-    await file.close();
   }
 }
 ```
 
-上面代码中，异步操作前面使用`await`关键字标明，即`await`后面的操作，应该返回 Promise 对象。凡是使用`yield`关键字的地方，就是`next`方法停下来的地方，它后面的表达式的值（即`await file.readLine()`的值），会作为`next()`返回对象的`value`属性，这一点是与同步 Generator 函数一致的。
-
-异步 Generator 函数内部，能够同时使用`await`和`yield`命令。可以这样理解，`await`命令用于将外部操作产生的值输入函数内部，`yield`命令用于将函数内部的值输出。
-
-上面代码定义的异步 Generator 函数的用法如下。
+上面代码的`mix`函数，可以将多个对象合成为一个类。使用的时候，只要继承这个类即可。
 
 ```
-(async function () {
-  for await (const line of readLines(filePath)) {
-    console.log(line);
-  }
-})()
-```
-
-异步 Generator 函数可以与`for await...of`循环结合起来使用。
-
-```
-async function* prefixLines(asyncIterable) {
-  for await (const line of asyncIterable) {
-    yield '> ' + line;
-  }
+class DistributedEdit extends mix(Loggable, Serializable) {
+  // ...
 }
 ```
 
-异步 Generator 函数的返回值是一个异步 Iterator，即每次调用它的`next`方法，会返回一个 Promise 对象，也就是说，跟在`yield`命令后面的，应该是一个 Promise 对象。如果像上面那个例子那样，`yield`命令后面是一个字符串，会被自动包装成一个 Promise 对象。
-
-```
-function fetchRandom() {
-  const url = 'https://www.random.org/decimal-fractions/'
-    + '?num=1&dec=10&col=1&format=plain&rnd=new';
-  return fetch(url);
-}
-
-async function* asyncGenerator() {
-  console.log('Start');
-  const result = await fetchRandom(); // (A)
-  yield 'Result: ' + await result.text(); // (B)
-  console.log('Done');
-}
-
-const ag = asyncGenerator();
-ag.next().then(({value, done}) => {
-  console.log(value);
-})
-```
-
-上面代码中，`ag`是`asyncGenerator`函数返回的异步遍历器对象。调用`ag.next()`以后，上面代码的执行顺序如下。
-
-1. `ag.next()`立刻返回一个 Promise 对象。
-2. `asyncGenerator`函数开始执行，打印出`Start`。
-3. `await`命令返回一个 Promise 对象，`asyncGenerator`函数停在这里。
-4. A 处变成 fulfilled 状态，产生的值放入`result`变量，`asyncGenerator`函数继续往下执行。
-5. 函数在 B 处的`yield`暂停执行，一旦`yield`命令取到值，`ag.next()`返回的那个 Promise 对象变成 fulfilled 状态。
-6. `ag.next()`后面的`then`方法指定的回调函数开始执行。该回调函数的参数是一个对象`{value, done}`，其中`value`的值是`yield`命令后面的那个表达式的值，`done`的值是`false`。
-
-A 和 B 两行的作用类似于下面的代码。
-
-```
-return new Promise((resolve, reject) => {
-  fetchRandom()
-  .then(result => result.text())
-  .then(result => {
-     resolve({
-       value: 'Result: ' + result,
-       done: false,
-     });
-  });
-});
-```
-
-如果异步 Generator 函数抛出错误，会导致 Promise 对象的状态变为`reject`，然后抛出的错误被`catch`方法捕获。
-
-```
-async function* asyncGenerator() {
-  throw new Error('Problem!');
-}
-
-asyncGenerator()
-.next()
-.catch(err => console.log(err)); // Error: Problem!
-```
-
-注意，普通的 async 函数返回的是一个 Promise 对象，而异步 Generator 函数返回的是一个异步 Iterator 对象。可以这样理解，async 函数和异步 Generator 函数，是封装异步操作的两种方法，都用来达到同一种目的。区别在于，前者自带执行器，后者通过`for await...of`执行，或者自己编写执行器。下面就是一个异步 Generator 函数的执行器。
-
-```
-async function takeAsync(asyncIterable, count = Infinity) {
-  const result = [];
-  const iterator = asyncIterable[Symbol.asyncIterator]();
-  while (result.length < count) {
-    const {value, done} = await iterator.next();
-    if (done) break;
-    result.push(value);
-  }
-  return result;
-}
-```
-
-上面代码中，异步 Generator 函数产生的异步遍历器，会通过`while`循环自动执行，每当`await iterator.next()`完成，就会进入下一轮循环。一旦`done`属性变为`true`，就会跳出循环，异步遍历器执行结束。
-
-下面是这个自动执行器的一个使用实例。
-
-```
-async function f() {
-  async function* gen() {
-    yield 'a';
-    yield 'b';
-    yield 'c';
-  }
-
-  return await takeAsync(gen());
-}
-
-f().then(function (result) {
-  console.log(result); // ['a', 'b', 'c']
-})
-```
-
-异步 Generator 函数出现以后，JavaScript 就有了四种函数形式：普通函数、async 函数、Generator 函数和异步 Generator 函数。请注意区分每种函数的不同之处。基本上，如果是一系列按照顺序执行的异步操作（比如读取文件，然后写入新内容，再存入硬盘），可以使用 async 函数；如果是一系列产生相同数据结构的异步操作（比如一行一行读取文件），可以使用异步 Generator 函数。
-
-异步 Generator 函数也可以通过`next`方法的参数，接收外部传入的数据。
-
-```
-const writer = openFile('someFile.txt');
-writer.next('hello'); // 立即执行
-writer.next('world'); // 立即执行
-await writer.return(); // 等待写入结束
-```
-
-上面代码中，`openFile`是一个异步 Generator 函数。`next`方法的参数，向该函数内部的操作传入数据。每次`next`方法都是同步执行的，最后的`await`命令用于等待整个写入操作结束。
-
-最后，同步的数据结构，也可以使用异步 Generator 函数。
-
-```
-async function* createAsyncIterable(syncIterable) {
-  for (const elem of syncIterable) {
-    yield elem;
-  }
-}
-```
-
-上面代码中，由于没有异步操作，所以也就没有使用`await`关键字。
-
-## yield* 语句
-
-`yield*`语句也可以跟一个异步遍历器。
-
-```
-async function* gen1() {
-  yield 'a';
-  yield 'b';
-  return 2;
-}
-
-async function* gen2() {
-  // result 最终会等于 2
-  const result = yield* gen1();
-}
-```
-
-上面代码中，`gen2`函数里面的`result`变量，最后的值是`2`。
-
-与同步 Generator 函数一样，`for await...of`循环会展开`yield*`。
-
-```
-(async function () {
-  for await (const x of gen2()) {
-    console.log(x);
-  }
-})();
-// a
-// b
-```
