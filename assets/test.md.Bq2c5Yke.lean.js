@@ -1,1 +1,0 @@
-import{_ as s,c as a,o as n,a5 as e}from"./chunks/framework.CteJOlxb.js";const g=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"test.md","filePath":"test.md","lastUpdated":1718189123000}'),p={name:"test.md"},t=e("",183),c=[t];function o(l,i,d,r,b,u){return n(),a("div",null,c)}const v=s(p,[["render",o]]);export{g as __pageData,v as default};
