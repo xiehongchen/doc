@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as a}from"./chunks/framework.B7o55Ran.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"前端/工程化/index.md","filePath":"前端/工程化/index.md","lastUpdated":1718696497000}'),n={name:"前端/工程化/index.md"};function r(o,s,d,c,i,p){return a(),t("div")}const f=e(n,[["render",r]]);export{m as __pageData,f as default};
