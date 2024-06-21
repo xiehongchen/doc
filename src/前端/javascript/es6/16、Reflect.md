@@ -288,9 +288,13 @@ const instance = new Greeting('张三');
 
 // Reflect.construct 的写法
 const instance = Reflect.construct(Greeting, ['张三']);
+// 显式地传递第三个参数来设置对象的原型
+const instance = Reflect.construct(Greeting, ['张三'], CustomPrototype);
 ```
 
 如果`Reflect.construct()`方法的第一个参数不是函数，会报错。
+- `Reflect.construct()`允许动态的选择构造函数和传递参数列表，而`new`不能
+- `Reflect.construct()`可以接受第三个参数，用于指定新创建对象的原型
 
 ### Reflect.getPrototypeOf(obj)
 

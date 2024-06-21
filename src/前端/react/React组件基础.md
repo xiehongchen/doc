@@ -188,7 +188,7 @@ export default App
 
 1. 定义的时候: class Fields语法  
 
-  \2. 使用的时候: 需要借助this关键词获取
+2. 使用的时候: 需要借助this关键词获取
 
 ```jsx
 import React from "react"
