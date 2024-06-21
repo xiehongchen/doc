@@ -279,7 +279,15 @@ export function createSidebar() {
       },
     ],
     "/后端/node/": [
-      { text: "node", link: "/后端/node/index.md" },
+      { text: "node", collapsed: true, items: [
+        { text: 'index', link: '/后端/node/node/index.md' },
+        { text: 'fs文件系统模块', link: '/后端/node/node/fs文件系统模块.md' },
+        { text: 'os', link: '/后端/node/node/os.md' },
+        { text: 'path路径模块', link: '/后端/node/node/path路径模块.md' },
+        { text: 'http 模块', link: '/后端/node/node/http 模块.md' },
+        { text: '模块化', link: '/后端/node/node/模块化.md' },
+        { text: 'npm和包', link: '/后端/node/node/npm和包.md' }
+      ] },
       { text: "express", link: "/后端/node/express.md" },
     ],
     "/后端/java/": [

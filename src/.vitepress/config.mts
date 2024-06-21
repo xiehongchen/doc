@@ -101,7 +101,7 @@ export default withPwa(
         {
           text: "后端",
           items: [
-            { text: "Node", link: "/后端/node/" },
+            { text: "Node", link: "/后端/node/node/index.md" },
             { text: "Java", link: "/后端/java/" }
           ],
         },

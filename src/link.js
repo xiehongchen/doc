@@ -81,15 +81,12 @@ function processFile(filePath, fileName, outputPath) {
   });
 }
 
-readDirectory("src/前端/typescript", "/src")
+readDirectory("src/后端/node/node", "/src")
   .then((res) => {
     console.log("readDirectory", res);
 
     // 如果index是数字，按照数字排序，否则删除
-    const sort = ['基础类型', '任意类型', '接口和对象类型', '数组类型', '函数扩展', 
-    '类型断言 | 联合类型 | 交叉类型', '内置对象&代码雨', 'Class类', '元组类型', '枚举类型', '类型推论|类型别名', 
-    'never类型', 'symbol类型', '泛型', 'tsconfig.json配置文件', 'namespace命名空间', '三斜线指令', '声明文件d.ts', 
-    'Mixins混入', '装饰器Decorator']
+    const sort = ['index', 'fs文件系统模块', 'path路径模块', 'http 模块', '模块化', 'npm和包']
     const list = res.map(item => {
       item.index = sort.findIndex(n => n == item.name)
       return item
