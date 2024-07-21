@@ -277,6 +277,7 @@ export function createSidebar() {
           { text: "Hooks进阶", link: "/前端/react/Hooks进阶.md" },
         ],
       },
+      { text: 'redux', link: '/前端/react/redux.md' }
     ],
     "/后端/node/": [
       { text: "node", collapsed: true, items: [
