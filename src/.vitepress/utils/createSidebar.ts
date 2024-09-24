@@ -262,6 +262,13 @@ export function createSidebar() {
           { text: "6、其他", link: "/前端/vue/vue3/6、其他.md" },
         ],
       },
+      {
+        text: "Vue3源码学习",
+        collapsed: true,
+        items: [
+          { text: "vdom", link: "/前端/vue/code/vdom" }
+        ]
+      }
     ],
     "/前端/react/": [
       {
