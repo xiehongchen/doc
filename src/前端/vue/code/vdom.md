@@ -89,7 +89,6 @@ vue分为编译时和运行时，由于p标签使用了`msg`响应式变量，�
 const transformElement = (node, context) => {
   return function postTransformElement() {
     // 第一部分
-    let vnodePatchFlag;
     let patchFlag = 0;
     const child = node.children[0];
     const type = child.type;
@@ -104,9 +103,7 @@ const transformElement = (node, context) => {
     ) {
       patchFlag |= PatchFlags.TEXT;
     }
-    if (patchFlag !== 0) {
-      vnodePatchFlag = String(patchFlag)
-    }
+
 
     // 第三部分
     node.codegenNode = createVNodeCall(
@@ -177,15 +174,7 @@ enum PatchFlags {
 
 拿到动态节点进行更新时，只需要将动态节点的`patchFlag`和`PatchFlags`中的枚举进行`&`"按位与"运算就可以知道当前节点是否是动态文本节点、动态class的节点。上面之所以没有涉及到`PatchFlags.CLASS`相关的代码，是因为当前例子中不存在动态class，所以我省略了。
 
-第二部分的第二个if语句，如下：
-
-```ts
-if (patchFlag !== 0) {
-  vnodePatchFlag = String(patchFlag)
-}
-```
-
-这段代码很简单，如果`patchFlag !== 0`表示当前节点是动态节点。然后将`patchFlag`转换为字符串赋值给`vnodePatchFlag`变量，在dev环境中`vnodePatchFlag`字符串中还包含节点是哪种动态类型的信息。如下图： ![vnodePatchFlag](/images/vue/3.png)
+如果`patchFlag !== 0`表示当前节点是动态节点。然后将`patchFlag`转换为字符串赋值给`vnodePatchFlag`变量，在dev环境中`vnodePatchFlag`字符串中还包含节点是哪种动态类型的信息。如下图： ![vnodePatchFlag](/images/vue/3.png)
 
 #### 第三部分
 
