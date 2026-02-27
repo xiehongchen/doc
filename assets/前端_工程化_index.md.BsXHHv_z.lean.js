@@ -1,1 +1,0 @@
-import{_ as e,o as t,c as a}from"./chunks/framework.wOgfrh2_.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"前端/工程化/index.md","filePath":"前端/工程化/index.md","lastUpdated":1772207387000}'),n={name:"前端/工程化/index.md"};function r(o,s,d,c,i,p){return t(),a("div")}const f=e(n,[["render",r]]);export{m as __pageData,f as default};
