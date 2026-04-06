@@ -60,12 +60,12 @@ export default withPwa(
           items: [
             {
               text: "HTML",
-              link: "/前端/html/",
+              link: "/frontend/basics/html/",
             },
-            { text: "CSS", link: "/前端/css/" },
+            { text: "CSS", link: "/frontend/basics/css/" },
             {
               text: "JavaScript",
-              link: "/前端/javascript/",
+              link: "/frontend/basics/javascript/",
             },
           ],
         },
@@ -74,36 +74,40 @@ export default withPwa(
           items: [
             {
               text: "TypeScript",
-              link: "/前端/typescript/",
+              link: "/frontend/typescript/",
             },
             {
               text: "Vue",
-              link: "/前端/vue/",
+              link: "/frontend/vue/",
             },
             {
               text: "React",
-              link: "/前端/react/",
+              link: "/frontend/react/",
             },
             {
               text: "工程化",
-              link: "/前端/工程化/",
+              link: "/frontend/engineering/",
             },
           ],
         },
         {
           text: "其他",
-          link: "/其他",
+          link: "/misc/",
         },
         {
           text: "算法",
-          link: "/算法",
+          link: "/algorithms/",
         },
         {
           text: "后端",
           items: [
-            { text: "Node", link: "/后端/node/node/index.md" },
-            { text: "Java", link: "/后端/java/" }
+            { text: "Node", link: "/backend/nodejs/" },
+            { text: "Java", link: "/backend/java/" }
           ],
+        },
+        {
+          text: "面试",
+          link: "/interview/",
         },
       ],
       // @ts-ignore
